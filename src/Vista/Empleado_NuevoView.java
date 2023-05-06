@@ -26,32 +26,33 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
     void botones(){
         IconRegresar.setVisible(true);
         IconRegresarHover.setVisible(false);
-//        IconAgregar.setVisible(true);
-//        IconAgregarHover.setVisible(false);
+        IconGuardarNew.setVisible(true);
+        IconGuardarNewHover.setVisible(false);
     }
 
     public String validar() {
-        if (txtdniingre.getText().equals("")) {
-            txtdniingre.requestFocus();
-            return " DNI";
-        } else if (txtnombreingre.getText().equals("")) {
-            txtnombreingre.requestFocus();
-            return " nombres";
-        } else if (txtapellidosingre.getText().equals("")) {
-            txtapellidosingre.requestFocus();
-            return " apellidos";
-        } else if (txtdireccioningre.getText().equals("")) {
-            txtdireccioningre.requestFocus();
-            return " direccion";
-        } else if (txtedadingre.getText().equals("") || Integer.parseInt(txtedadingre.getText()) < 0) {
-            txtedadingre.requestFocus();
-            return " edad";
-        } else if (txtcelularingre.getText().equals("")) {
-            txtcelularingre.requestFocus();
-            return " celular";
-        } else {
-            return "";
-        }
+//        if (txtdniingre.getText().equals("")) {
+//            txtdniingre.requestFocus();
+//            return " DNI";
+//        } else if (txtnombreingre.getText().equals("")) {
+//            txtnombreingre.requestFocus();
+//            return " nombres";
+//        } else if (txtapellidosingre.getText().equals("")) {
+//            txtapellidosingre.requestFocus();
+//            return " apellidos";
+//        } else if (txtdireccioningre.getText().equals("")) {
+//            txtdireccioningre.requestFocus();
+//            return " direccion";
+//        } else if (txtedadingre.getText().equals("") || Integer.parseInt(txtedadingre.getText()) < 0) {
+//            txtedadingre.requestFocus();
+//            return " edad";
+//        } else if (txtcelularingre.getText().equals("")) {
+//            txtcelularingre.requestFocus();
+//            return " celular";
+//        } else {
+//            return "";
+//        }
+      return "";
     }
     
     public void limpiarcampos() {
@@ -59,7 +60,7 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         txtnombreingre.setText("");
         txtapellidosingre.setText("");
         txtdireccioningre.setText("");
-        txtedadingre.setText("");
+        //txtedadingre.setText("");
         txtcelularingre.setText("");
         txtdniingre.requestFocus();
     }
@@ -79,7 +80,6 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtdireccioningre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtedadingre = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtcelularingre = new javax.swing.JTextField();
         Derechos = new javax.swing.JLabel();
@@ -87,68 +87,94 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         IconRegresar = new javax.swing.JLabel();
         IconRegresarHover = new javax.swing.JLabel();
         btnGuardarNew = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtedadingre3 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtedadingre4 = new javax.swing.JTextField();
+        txtedadingre5 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtedadingre6 = new javax.swing.JTextField();
         IconGuardarNew = new javax.swing.JLabel();
         IconGuardarNewHover = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txtedadingre7 = new javax.swing.JTextField();
+        txtedadingre8 = new javax.swing.JTextField();
+        cboHospe = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(700, 510));
         setMinimumSize(new java.awt.Dimension(700, 510));
         setPreferredSize(new java.awt.Dimension(700, 510));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("SF UI Display", 1, 18)); // NOI18N
         jLabel2.setText("NUEVO EMPLEADO");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 30, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         jLabel1.setText("DNI:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 70, -1, -1));
 
         txtdniingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
         txtdniingre.setMaximumSize(new java.awt.Dimension(210, 29));
         txtdniingre.setMinimumSize(new java.awt.Dimension(210, 29));
         txtdniingre.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtdniingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 65, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         jLabel3.setText("Nombres:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 70, -1, -1));
 
         txtnombreingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
         txtnombreingre.setMaximumSize(new java.awt.Dimension(210, 29));
         txtnombreingre.setMinimumSize(new java.awt.Dimension(210, 29));
         txtnombreingre.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtnombreingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 65, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel4.setText("Apellidos:");
+        jLabel4.setText("Apellido Pat:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 114, -1, -1));
 
         txtapellidosingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
         txtapellidosingre.setMaximumSize(new java.awt.Dimension(210, 29));
         txtapellidosingre.setMinimumSize(new java.awt.Dimension(210, 29));
         txtapellidosingre.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtapellidosingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 109, 190, -1));
 
         jLabel5.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel5.setText("Direccion:");
+        jLabel5.setText("Apellido Mat:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 114, -1, -1));
 
         txtdireccioningre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
         txtdireccioningre.setMaximumSize(new java.awt.Dimension(210, 29));
         txtdireccioningre.setMinimumSize(new java.awt.Dimension(210, 29));
         txtdireccioningre.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtdireccioningre, new org.netbeans.lib.awtextra.AbsoluteConstraints(478, 109, 194, -1));
 
         jLabel6.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel6.setText("Edad:");
-
-        txtedadingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtedadingre.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtedadingre.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtedadingre.setPreferredSize(new java.awt.Dimension(210, 29));
+        jLabel6.setText("Genero:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 165, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel7.setText("Celular:");
+        jLabel7.setText("F. Fin:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
 
         txtcelularingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
         txtcelularingre.setMaximumSize(new java.awt.Dimension(210, 29));
         txtcelularingre.setMinimumSize(new java.awt.Dimension(210, 29));
         txtcelularingre.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtcelularingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 160, -1, -1));
 
         Derechos.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         Derechos.setForeground(new java.awt.Color(102, 102, 102));
         Derechos.setText("2022 © Microsense");
+        add(Derechos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 150, 30));
 
         btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         btnRegresar.setMaximumSize(new java.awt.Dimension(115, 42));
@@ -191,6 +217,8 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 415, -1, -1));
+
         btnGuardarNew.setBackground(new java.awt.Color(255, 255, 255));
         btnGuardarNew.setMaximumSize(new java.awt.Dimension(115, 42));
         btnGuardarNew.setMinimumSize(new java.awt.Dimension(115, 42));
@@ -207,108 +235,108 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
             }
         });
 
-        IconGuardarNew.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        IconGuardarNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logos/btnGuardarNew.png"))); // NOI18N
-
-        IconGuardarNewHover.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        IconGuardarNewHover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logos/btnGuardarNewHover.png"))); // NOI18N
-
         javax.swing.GroupLayout btnGuardarNewLayout = new javax.swing.GroupLayout(btnGuardarNew);
         btnGuardarNew.setLayout(btnGuardarNewLayout);
         btnGuardarNewLayout.setHorizontalGroup(
             btnGuardarNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IconGuardarNew)
-            .addGroup(btnGuardarNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(btnGuardarNewLayout.createSequentialGroup()
-                    .addComponent(IconGuardarNewHover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGap(0, 115, Short.MAX_VALUE)
         );
         btnGuardarNewLayout.setVerticalGroup(
             btnGuardarNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IconGuardarNew)
-            .addGroup(btnGuardarNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(btnGuardarNewLayout.createSequentialGroup()
-                    .addComponent(IconGuardarNewHover)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGap(0, 42, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnGuardarNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(20, 20, 20)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel6))
-                                    .addGap(20, 20, 20)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtedadingre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtapellidosingre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtdniingre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel7)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtcelularingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtdireccioningre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addGap(20, 20, 20)
-                                            .addComponent(txtnombreingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Derechos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtdniingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtnombreingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtapellidosingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtdireccioningre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(txtcelularingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(txtedadingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(158, 158, 158)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardarNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(Derechos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        add(btnGuardarNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 415, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel8.setText("Modalidad Contrato:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 219, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel9.setText("Jornada Laboral:");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 266, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel10.setText("Fecha Nacimiento:");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 312, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel11.setText("Salario:");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 359, -1, -1));
+
+        txtedadingre3.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtedadingre3.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtedadingre3.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtedadingre3.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtedadingre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 354, 75, -1));
+
+        jLabel12.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel12.setText("Foto:");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 300, -1, -1));
+
+        txtedadingre4.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtedadingre4.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtedadingre4.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtedadingre4.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtedadingre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 50, -1));
+
+        txtedadingre5.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtedadingre5.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtedadingre5.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtedadingre5.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtedadingre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 307, 75, -1));
+
+        jLabel13.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel13.setText("Fecha Ingreso:");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 359, -1, -1));
+
+        txtedadingre6.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtedadingre6.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtedadingre6.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtedadingre6.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtedadingre6, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 354, 80, -1));
+
+        IconGuardarNew.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        IconGuardarNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logos/btnGuardarNew.png"))); // NOI18N
+        add(IconGuardarNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, -1));
+
+        IconGuardarNewHover.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        IconGuardarNewHover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logos/btnGuardarNewHover.png"))); // NOI18N
+        add(IconGuardarNewHover, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plazo Determinado", "Plazo Indeterminado" }));
+        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiempo Completo", "Tiempo Parcial" }));
+        add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 120, -1));
+
+        jLabel14.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel14.setText("Area:");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 165, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel15.setText("F. Inicio:");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, -1));
+
+        txtedadingre7.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtedadingre7.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtedadingre7.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtedadingre7.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtedadingre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 295, 80, -1));
+
+        txtedadingre8.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtedadingre8.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtedadingre8.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtedadingre8.setPreferredSize(new java.awt.Dimension(210, 29));
+        add(txtedadingre8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 50, -1));
+
+        cboHospe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
+        cboHospe.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboHospeItemStateChanged(evt);
+            }
+        });
+        add(cboHospe, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 160, 180, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
@@ -358,6 +386,15 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         IconGuardarNewHover.setVisible(false);
     }//GEN-LAST:event_btnGuardarNewMouseExited
 
+    private void cboHospeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboHospeItemStateChanged
+//        if (cboHospe.getSelectedIndex() >= 0) {
+//            String hosNombre = cboHospe.getSelectedItem().toString();
+//            cboTipo.setEnabled(true);
+//            cboTipo.removeAllItems();
+//            resNue.llenartipohabitacion(cboTipo, hosNombre);
+//        }
+    }//GEN-LAST:event_cboHospeItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Derechos;
@@ -367,18 +404,34 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
     private javax.swing.JLabel IconRegresarHover;
     private javax.swing.JPanel btnGuardarNew;
     private javax.swing.JPanel btnRegresar;
+    private javax.swing.JComboBox<Object> cboHospe;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtapellidosingre;
     private javax.swing.JTextField txtcelularingre;
     private javax.swing.JTextField txtdireccioningre;
     private javax.swing.JTextField txtdniingre;
-    private javax.swing.JTextField txtedadingre;
+    private javax.swing.JTextField txtedadingre3;
+    private javax.swing.JTextField txtedadingre4;
+    private javax.swing.JTextField txtedadingre5;
+    private javax.swing.JTextField txtedadingre6;
+    private javax.swing.JTextField txtedadingre7;
+    private javax.swing.JTextField txtedadingre8;
     private javax.swing.JTextField txtnombreingre;
     // End of variables declaration//GEN-END:variables
 }
