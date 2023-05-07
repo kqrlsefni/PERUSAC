@@ -7,6 +7,7 @@ package modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -62,29 +63,35 @@ public class EmpleadoConsultas {
             return datos;
     }
     
-    /*
-    public int agregar(Persona p){
-        String sql="insert into persona (clave,nombres,apellidos,domicilio,celular,email,fecnac,genero) values(?,?,?,?,?,?,?,?)";
+    
+    public int agregar(Empleado emp){
+        String sql="insert into tb_empleado (EmpNombres,EmpdApellidoPat,EmpApellidoMat,EmpDni,EmpGenero,EmpArea,EmpModalidadContrato,EmpJornadaLaboral,EmpFecNacimiento,EmpFoto,EmpSalario) values(?,?,?,?,?,?,?,?)";
         try {
              conexion = conectar.getConnection();
              ps = conexion.prepareStatement(sql);
-             ps.setInt(1, p.getClave());
-             ps.setString(2, p.getNombres());
-             ps.setString(3, p.getApellidos());
-             ps.setString(4, p.getDomicilio());
-             ps.setString(5, p.getCelular());
-             ps.setString(6, p.getEmail());
-             ps.setDate(7, p.getFecnac());
-             ps.setString(8, p.getGenero());
-           
+             ps.setString(1, emp.getEmpNombre());
+             ps.setString(2, emp.getEmpApellidoPat());
+             ps.setString(3, emp.getEmpApellidoMat());
+             ps.setString(4, emp.getEmpDni());
+             ps.setString(5, emp.getEmpGen());
+             ps.setString(6, emp.getEmpArea());
+             ps.setString(7, emp.getEmpModContrat());
+             ps.setInt(8, emp.getEmpJornadaLab());
+             ps.setString(9, emp.getEmpFechaNac());
+             ps.setString(10, emp.getEmpFechaNac());
+             ps.setString(11, emp.getEmpFoto());
+             ps.setFloat(12, emp.getEmpSalario());
+             // ps.setFloat(13, emp.getEmpSa());
+             //ps.setString(9, emp.getEmpEstado());
+             
              ps.executeUpdate();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println("Error, "+e);
         }
         return 1;
     }
-  
+  /*
     public int actualizar(Persona p){
         int r=0;
        
