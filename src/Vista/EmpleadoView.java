@@ -35,11 +35,6 @@ public class EmpleadoView extends javax.swing.JPanel {
     public void mostrarEmpleados(Vector vec) {
         Object objeto[][] = new Object[vec.size()][10];
         tblEmpleados.setModel(new DefaultTableModel(objeto, new String[]{"CODIGO", "DNI", "NOMBRES", "APELLIDOS", "GENERO", "ÁREA", "MODALIDAD CONTRATO", "JORNADA LABORAL","SALARIO","FECHA INGRESO"}){
- 
-    
-
-            
-            
             @Override
             public boolean isCellEditable(int row, int column) {
                 if (column == 7) {
@@ -447,10 +442,10 @@ public class EmpleadoView extends javax.swing.JPanel {
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnNuevo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblEmpleados;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable tblEmpleados;
     private javax.swing.JTextField txtBuscarClie;
     // End of variables declaration//GEN-END:variables
 }

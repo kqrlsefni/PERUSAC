@@ -25,9 +25,9 @@ public class EmpleadoConsultas {
     
     //Creamos el método Listar
     public List listar(){
-    //Creamos una variable datos de tipo List del objeto Persona
+    //Creamos una variable datos de tipo List del objeto Empleado
         List<Empleado>datos = new ArrayList<>();
-        String sql = "select * from empleado";
+        String sql = "select * from empleado where EmpEstado = 1";
             try {
                 //Hacer referencia a nuestra conexión
                 conexion = conectar.getConnection();
@@ -38,16 +38,19 @@ public class EmpleadoConsultas {
                     //Instanciamos el objeto persona
                     Empleado e = new Empleado();
                     e.setEmpCodigo(rs.getInt(1));
-                    e.setEmpNombre(rs.getString(2));
-                    e.setEmpApellidoMat(rs.getString(3));
-                    e.setEmpApellidoPat(rs.getString(4));
-                    e.setEmpGen(rs.getString(5));
-                    e.setEmpArea(rs.getString(6));
-                    e.setEmpModContrat(rs.getString(7));
-                    e.setEmpJornadaLab(rs.getInt(8));
-                    e.setEmpFechaNac(rs.getString(9));
-                    e.setEmpFechaIngreso(rs.getString(10));
-                    e.setEmpEstado(rs.getString(11));
+                    e.setEmpDni(rs.getString(2));
+                    e.setEmpNombre(rs.getString(3));
+                    e.setEmpApellidoMat(rs.getString(4));
+                    e.setEmpApellidoPat(rs.getString(5));
+                    e.setEmpGen(rs.getString(6));
+                    e.setEmpArea(rs.getString(7));
+                    e.setEmpModContrato(rs.getString(7));
+                    e.setEmpJornadaLab(rs.getString(8));
+                    e.setEmpFechaNac(rs.getDate(9));
+                    e.setEmpFoto(rs.getString(10));
+                    e.setEmpSalario(rs.getFloat(11));
+                    e.setEmpFechaIngreso(rs.getDate(12));
+                    e.setEmpEstado(rs.getInt(13));
                     
                     
                     //Agregamos a la variable 
@@ -59,19 +62,25 @@ public class EmpleadoConsultas {
             //Este método va a retornar los datos del objeto
             return datos;
     }
-    public int agregar(Persona p){
-        String sql="insert into persona (clave,nombres,apellidos,domicilio,celular,email,fecnac,genero) values(?,?,?,?,?,?,?,?)";
+    public int agregar(Empleado p){
+        String sql="insert into empleado (EmpDni,EmpNombres,EmpApellidoPaterno,EmpApellidoMaterno,EmpGenero,EmpArea,EmpModalidadContrato,EmpJornadaLaboral,EmpFecNacimiento,"
+                + "EmpSalario,EmpFechaIngreso,EmpEstado) values(?,?,?,?,?,?,?,?)";
         try {
              conexion = conectar.getConnection();
              ps = conexion.prepareStatement(sql);
-             ps.setInt(1, p.getClave());
-             ps.setString(2, p.getNombres());
-             ps.setString(3, p.getApellidos());
-             ps.setString(4, p.getDomicilio());
-             ps.setString(5, p.getCelular());
-             ps.setString(6, p.getEmail());
-             ps.setDate(7, p.getFecnac());
-             ps.setString(8, p.getGenero());
+             ps.setString(1, p.getEmpDni());
+             ps.setString(2, p.getEmpNombre());
+             ps.setString(3, p.getEmpApellidoPat());
+             ps.setString(4, p.getEmpApellidoMat());
+             ps.setString(5, p.getEmpGen());
+             ps.setString(6, p.getEmpArea());
+             ps.setString(7, p.getEmpModContrato());
+             ps.setString(8, p.getEmpJornadaLab());
+             ps.setDate(9, p.getEmpFechaNac());
+             //ps.setString(10, p.getEmpFoto());
+             ps.setDouble(10, p.getEmpSalario());
+             ps.setDate(11, p.getEmpFechaIngreso());
+             
              //llamamos el método para ejecutar la consulta SQl insert
              ps.executeUpdate();
             
@@ -81,22 +90,27 @@ public class EmpleadoConsultas {
         return 1;
     }
     //Creamos el método actualizar con el parámetro al objeto persona
-    public int actualizar(Persona p){
+    public int actualizar(Empleado p){
         int r=0;
         //Crear la variable tipo String para la consulta SQL
-        String sql="update persona set nombres=?, apellidos=?, domicilio=?, celular=?, email=?, fecnac=?, genero=? where clave=?";
+        String sql="update empleado set EmpDni=?,EmpNombres=?,EmpApellidoPaterno=?,EmpApellidoMaterno=?,EmpGenero=?,EmpArea=?,EmpModalidadContrato=?,EmpJornadaLaboral=?,EmpFecNacimiento=?,"
+                + "EmpSalario=?,EmpFechaIngreso=? where EmpCodigo=?";
         try {
             //Hacer referencia a nuestra conexión
             conexion = conectar.getConnection();
-            ps = conexion.prepareStatement(sql);
-            ps.setString(1, p.getNombres());
-            ps.setString(2, p.getApellidos());
-            ps.setString(3, p.getDomicilio());
-            ps.setString(4, p.getCelular());
-            ps.setString(5, p.getEmail());
-            ps.setDate(6, p.getFecnac());
-            ps.setString(7, p.getGenero());
-            ps.setInt(8, p.getClave());
+            ps.setString(1, p.getEmpDni());
+            ps.setString(2, p.getEmpNombre());
+            ps.setString(3, p.getEmpApellidoPat());
+            ps.setString(4, p.getEmpApellidoMat());
+            ps.setString(5, p.getEmpGen());
+            ps.setString(6, p.getEmpArea());
+            ps.setString(7, p.getEmpModContrato());
+            ps.setString(8, p.getEmpJornadaLab());
+            ps.setDate(9, p.getEmpFechaNac());
+            //ps.setString(10, p.getEmpFoto());
+            ps.setDouble(10, p.getEmpSalario());
+            ps.setDate(11, p.getEmpFechaIngreso());
+            ps.setInt(12, p.getEmpCodigo());
             //llamamos el método para ejecutar la consulta SQl insert
             r=ps.executeUpdate();
             if (r==1){
@@ -110,7 +124,7 @@ public class EmpleadoConsultas {
         return r;
     }
     public void delete(int id){
-        String sql="delete from persona where idPersona="+id;
+        String sql="delete from persona where idEmpleado="+id;
         try {
             conexion = conectar.getConnection();
             ps = conexion.prepareStatement(sql);

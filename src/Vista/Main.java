@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.Controlador;
 import javax.swing.UIManager;
 //import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
@@ -87,10 +88,13 @@ public class Main extends javax.swing.JFrame {
 //        BeautyEyeLNFHelper.translucencyAtFrameInactive = false;
 //        UIManager.put("RootPane.setupButtonVisible", false);
 //        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-
+         
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                Empleado_NuevoView vistaNuevo = new Empleado_NuevoView();
+                EmpleadoView vista = new EmpleadoView();
+                Controlador c = new Controlador(vistaNuevo,vista);
                 new Main().setVisible(true);
             }
         });

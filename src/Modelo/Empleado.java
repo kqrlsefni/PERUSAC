@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.sql.Date;
+
 /**
  *
  * @author Omar
@@ -16,18 +18,18 @@ public class Empleado {
     private String empApellidoPat;
     private String empGen;
     private String empArea;
-    private String empModContrat;
-    private int empJornadaLab;
-    private String empFechaNac;
+    private String empModContrato;
+    private String empJornadaLab;
+    private Date empFechaNac;
     private String empFoto;
     private Float empSalario;
-    private String empFechaIngreso;
-    private String empEstado;
+    private Date empFechaIngreso;
+    private int empEstado;
     
     
     public Empleado(){}
 
-    public Empleado(int empCodigo, String empDni, String empNombre, String empApellidoMat, String empApellidoPat, String empGen, String empArea, String empModContrat, int empJornadaLab, String empFechaNac, String empFoto, Float empSalario, String empFechaIngreso,String empEstado) {
+    public Empleado(int empCodigo, String empDni, String empNombre, String empApellidoMat, String empApellidoPat, String empGen, String empArea, String empModContrato, String empJornadaLab, Date empFechaNac, String empFoto, Float empSalario, Date empFechaIngreso, int empEstado) {
         this.empCodigo = empCodigo;
         this.empDni = empDni;
         this.empNombre = empNombre;
@@ -35,7 +37,7 @@ public class Empleado {
         this.empApellidoPat = empApellidoPat;
         this.empGen = empGen;
         this.empArea = empArea;
-        this.empModContrat = empModContrat;
+        this.empModContrato = empModContrato;
         this.empJornadaLab = empJornadaLab;
         this.empFechaNac = empFechaNac;
         this.empFoto = empFoto;
@@ -43,6 +45,10 @@ public class Empleado {
         this.empFechaIngreso = empFechaIngreso;
         this.empEstado = empEstado;
     }
+
+    
+
+    
 
     public int getEmpCodigo() {
         return empCodigo;
@@ -100,29 +106,17 @@ public class Empleado {
         this.empArea = empArea;
     }
 
-    public String getEmpModContrat() {
-        return empModContrat;
+    public String getEmpModContrato() {
+        return empModContrato;
     }
 
-    public void setEmpModContrat(String empModContrat) {
-        this.empModContrat = empModContrat;
+    public void setEmpModContrato(String empModContrat) {
+        this.empModContrato = empModContrat;
     }
 
-    public int getEmpJornadaLab() {
-        return empJornadaLab;
-    }
+    
 
-    public void setEmpJornadaLab(int empJornadaLab) {
-        this.empJornadaLab = empJornadaLab;
-    }
-
-    public String getEmpFechaNac() {
-        return empFechaNac;
-    }
-
-    public void setEmpFechaNac(String empFechaNac) {
-        this.empFechaNac = empFechaNac;
-    }
+    
 
     public String getEmpFoto() {
         return empFoto;
@@ -140,13 +134,39 @@ public class Empleado {
         this.empSalario = empSalario;
     }
 
-    public String getEmpFechaIngreso() {
+    public String getEmpJornadaLab() {
+        return empJornadaLab;
+    }
+
+    public void setEmpJornadaLab(String empJornadaLab) {
+        this.empJornadaLab = empJornadaLab;
+    }
+
+    public Date getEmpFechaNac() {
+        return empFechaNac;
+    }
+
+    public void setEmpFechaNac(Date empFechaNac) {
+        this.empFechaNac = empFechaNac;
+    }
+
+    public Date getEmpFechaIngreso() {
         return empFechaIngreso;
     }
 
-    public void setEmpFechaIngreso(String empFechaIngreso) {
+    public void setEmpFechaIngreso(Date empFechaIngreso) {
         this.empFechaIngreso = empFechaIngreso;
     }
+
+    public int getEmpEstado() {
+        return empEstado;
+    }
+
+    public void setEmpEstado(int empEstado) {
+        this.empEstado = empEstado;
+    }
+
+    
     
     
     
