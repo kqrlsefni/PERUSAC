@@ -43,10 +43,7 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         } else if (txtdireccioningre.getText().equals("")) {
             txtdireccioningre.requestFocus();
             return " direccion";
-        } else if (txtedadingre.getText().equals("") || Integer.parseInt(txtedadingre.getText()) < 0) {
-            txtedadingre.requestFocus();
-            return " edad";
-        } else if (txtcelularingre.getText().equals("")) {
+        }  else if (txtcelularingre.getText().equals("")) {
             txtcelularingre.requestFocus();
             return " celular";
         } else {
@@ -59,7 +56,6 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         txtnombreingre.setText("");
         txtapellidosingre.setText("");
         txtdireccioningre.setText("");
-        txtedadingre.setText("");
         txtcelularingre.setText("");
         txtdniingre.requestFocus();
     }
@@ -79,7 +75,6 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtdireccioningre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtedadingre = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtcelularingre = new javax.swing.JTextField();
         Derechos = new javax.swing.JLabel();
@@ -89,6 +84,7 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         btnGuardarNew = new javax.swing.JPanel();
         IconGuardarNew = new javax.swing.JLabel();
         IconGuardarNewHover = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(700, 510));
@@ -115,7 +111,7 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         txtnombreingre.setPreferredSize(new java.awt.Dimension(210, 29));
 
         jLabel4.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel4.setText("Apellidos:");
+        jLabel4.setText("Apellidos Pat:");
 
         txtapellidosingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
         txtapellidosingre.setMaximumSize(new java.awt.Dimension(210, 29));
@@ -123,7 +119,7 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         txtapellidosingre.setPreferredSize(new java.awt.Dimension(210, 29));
 
         jLabel5.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel5.setText("Direccion:");
+        jLabel5.setText("Apellido Mat:");
 
         txtdireccioningre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
         txtdireccioningre.setMaximumSize(new java.awt.Dimension(210, 29));
@@ -131,15 +127,9 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         txtdireccioningre.setPreferredSize(new java.awt.Dimension(210, 29));
 
         jLabel6.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel6.setText("Edad:");
-
-        txtedadingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtedadingre.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtedadingre.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtedadingre.setPreferredSize(new java.awt.Dimension(210, 29));
+        jLabel6.setText("Genero: ");
 
         jLabel7.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel7.setText("Celular:");
 
         txtcelularingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
         txtcelularingre.setMaximumSize(new java.awt.Dimension(210, 29));
@@ -232,6 +222,8 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -254,10 +246,10 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
                                         .addComponent(jLabel4)
                                         .addComponent(jLabel6))
                                     .addGap(20, 20, 20)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtedadingre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtapellidosingre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtdniingre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtapellidosingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtdniingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(layout.createSequentialGroup()
@@ -275,7 +267,7 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Derechos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,19 +286,19 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
                     .addComponent(txtapellidosingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(txtdireccioningre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
                         .addComponent(txtcelularingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
-                        .addComponent(txtedadingre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(158, 158, 158)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(152, 152, 152)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(Derechos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -367,6 +359,7 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
     private javax.swing.JLabel IconRegresarHover;
     private javax.swing.JPanel btnGuardarNew;
     private javax.swing.JPanel btnRegresar;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -378,7 +371,6 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
     private javax.swing.JTextField txtcelularingre;
     private javax.swing.JTextField txtdireccioningre;
     private javax.swing.JTextField txtdniingre;
-    private javax.swing.JTextField txtedadingre;
     private javax.swing.JTextField txtnombreingre;
     // End of variables declaration//GEN-END:variables
 }
