@@ -65,10 +65,10 @@ public class EmpleadoView extends javax.swing.JPanel {
             tblEmpleados.setValueAt(col.getEmpApellidoPat(), i, 3);
             tblEmpleados.setValueAt(col.getEmpGen(), i, 4);
             tblEmpleados.setValueAt(col.getEmpArea(), i, 5);
-            tblEmpleados.setValueAt(col.getEmpModContrat(), i, 6);
+        //  tblEmpleados.setValueAt(col.getEmpModContrat(), i, 6);
           
-            tblEmpleados.setValueAt(col.getEmpJornadaLab(), i, 7);
-            tblEmpleados.setValueAt(col.getEmpFechaNac(), i, 8);
+             tblEmpleados.setValueAt(col.getEmpJornadaLab(), i, 6);
+            tblEmpleados.setValueAt(col.getEmpFechaNac(), i, 7);
             
         }
     }

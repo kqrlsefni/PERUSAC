@@ -145,7 +145,7 @@ public class Dashboard extends javax.swing.JPanel {
                 txtEmpleadoMousePressed(evt);
             }
         });
-        btnEmpleado.add(txtEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, -1));
+        btnEmpleado.add(txtEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 140, -1));
 
         sideBar.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, -1, -1));
 
@@ -198,9 +198,9 @@ public class Dashboard extends javax.swing.JPanel {
                 txtBitacoraMousePressed(evt);
             }
         });
-        btnBitacora.add(txtBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, -1));
+        btnBitacora.add(txtBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 140, -1));
 
-        sideBar.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
+        sideBar.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 150, -1));
 
         btnReporte.setBackground(new java.awt.Color(65, 72, 109));
         btnReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -251,9 +251,9 @@ public class Dashboard extends javax.swing.JPanel {
                 txtReporteMousePressed(evt);
             }
         });
-        btnReporte.add(txtReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, -1));
+        btnReporte.add(txtReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, -1));
 
-        sideBar.add(btnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
+        sideBar.add(btnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 150, -1));
 
         btnCerrarSesion.setBackground(new java.awt.Color(65, 72, 109));
         btnCerrarSesion.setMaximumSize(new java.awt.Dimension(200, 50));
@@ -284,8 +284,9 @@ public class Dashboard extends javax.swing.JPanel {
         btnCerrarSesionLayout.setHorizontalGroup(
             btnCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCerrarSesionLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(txtCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
         btnCerrarSesionLayout.setVerticalGroup(
             btnCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +304,7 @@ public class Dashboard extends javax.swing.JPanel {
         panelContenido.setLayout(panelContenidoLayout);
         panelContenidoLayout.setHorizontalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
+            .addGap(0, 1066, Short.MAX_VALUE)
         );
         panelContenidoLayout.setVerticalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,11 +316,11 @@ public class Dashboard extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(sideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addComponent(sideBar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+            .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, 1228, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

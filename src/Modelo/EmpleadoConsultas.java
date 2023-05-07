@@ -44,13 +44,14 @@ public class EmpleadoConsultas {
                     e.setEmpNombre(rs.getString(2));
                     e.setEmpApellidoPat(rs.getString(3));
                     e.setEmpApellidoMat(rs.getString(4));
-                    e.setEmpGen(rs.getString(5));
-                    e.setEmpArea(rs.getString(6));
-                    e.setEmpModContrat(rs.getString(7));
-                    e.setEmpJornadaLab(rs.getInt(8));
-                    e.setEmpFechaNac(rs.getString(9));
-                    e.setEmpFechaIngreso(rs.getString(10));
-                    e.setEmpEstado(rs.getString(11));
+                    e.setEmpDni(rs.getString(5));
+                    e.setEmpGen(rs.getString(6));
+                    e.setEmpArea(rs.getString(7));
+                    e.setEmpModContrat(rs.getString(8));
+                    e.setEmpJornadaLab(rs.getInt(9));
+                    e.setEmpFechaNac(rs.getString(10));
+                    e.setEmpFechaIngreso(rs.getString(11));
+                    e.setEmpEstado(rs.getString(12));
                     
                     
                     //Agregamos a la variable 
