@@ -9,6 +9,7 @@ package modelo;
  * @author Omar
  */
 public class Empleado {
+    
     private int empCodigo;
     private String empDni;
     private String empNombre;
@@ -147,10 +148,12 @@ public class Empleado {
     public void setEmpFechaIngreso(String empFechaIngreso) {
         this.empFechaIngreso = empFechaIngreso;
     }
-    
-    
-    
-    
-    
-    
+
+    public String getEmpEstado() {
+        return empEstado;
+    }
+
+    public void setEmpEstado(String empEstado) {
+        this.empEstado = empEstado;
+    }
 }

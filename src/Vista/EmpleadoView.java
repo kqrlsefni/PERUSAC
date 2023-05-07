@@ -6,6 +6,8 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import modelo.Empleado;
+import modelo.EmpleadoConsultas;
 
 public class EmpleadoView extends javax.swing.JPanel {
 
@@ -15,7 +17,9 @@ public class EmpleadoView extends javax.swing.JPanel {
     public EmpleadoView() {
         initComponents();
         setSize(700, 510);
-        Vector v = new Vector();
+        Vector v ;
+        EmpleadoConsultas eco = new EmpleadoConsultas();
+        v = eco.listar();
         mostrarEmpleados(v);
         mostrar();
 
@@ -51,18 +55,22 @@ public class EmpleadoView extends javax.swing.JPanel {
             
         });
         jScrollPane1.setViewportView(tblEmpleados);
-//        for (int i = 0; i < vec.size(); i++) {
-//            c1 = (Entidad.ClienteEnt) vec.elementAt(i);
-//            tblclientes.clearSelection();
-//            tblclientes.setValueAt(c1.getClienId(), i, 0);
-//            tblclientes.setValueAt(c1.getClienDNI(), i, 1);
-//            tblclientes.setValueAt(c1.getClienNom(), i, 2);
-//            tblclientes.setValueAt(c1.getClienApe(), i, 3);
-//            tblclientes.setValueAt(c1.getClienDirec(), i, 4);
-//            tblclientes.setValueAt(c1.getClienEdad(), i, 5);
-//            tblclientes.setValueAt(c1.getClienCel(), i, 6);
-//
-//        }
+        
+        for (int i = 0; i < vec.size(); i++) {
+            Empleado col = (Empleado) vec.elementAt(i);
+            tblEmpleados.clearSelection();
+            tblEmpleados.setValueAt(col.getEmpCodigo(), i, 0);
+            tblEmpleados.setValueAt(col.getEmpDni(), i, 1);
+            tblEmpleados.setValueAt(col.getEmpNombre(), i, 2);
+            tblEmpleados.setValueAt(col.getEmpApellidoPat(), i, 3);
+            tblEmpleados.setValueAt(col.getEmpGen(), i, 4);
+            tblEmpleados.setValueAt(col.getEmpArea(), i, 5);
+            tblEmpleados.setValueAt(col.getEmpModContrat(), i, 6);
+          
+            tblEmpleados.setValueAt(col.getEmpJornadaLab(), i, 7);
+            tblEmpleados.setValueAt(col.getEmpFechaNac(), i, 8);
+            
+        }
     }
 
     @SuppressWarnings("unchecked")

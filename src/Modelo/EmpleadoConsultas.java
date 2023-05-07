@@ -5,17 +5,19 @@
 package modelo;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
+import modelo.Conexion;
 
 /**
  *
  * @author Omar
  */
 public class EmpleadoConsultas {
+    
     
     Conexion conectar = new Conexion();
     //Crear una variables de tipo Connection y para las conusltas SQL y almacenamiento de datos
@@ -24,10 +26,10 @@ public class EmpleadoConsultas {
     ResultSet rs;
     
     //Creamos el método Listar
-    public List listar(){
+    public Vector listar(){
     //Creamos una variable datos de tipo List del objeto Persona
-        List<Empleado>datos = new ArrayList<>();
-        String sql = "select * from empleado";
+        Vector<Empleado>datos = new Vector<>();
+        String sql = "select * from tb_empleado";
             try {
                 //Hacer referencia a nuestra conexión
                 conexion = conectar.getConnection();
@@ -39,8 +41,8 @@ public class EmpleadoConsultas {
                     Empleado e = new Empleado();
                     e.setEmpCodigo(rs.getInt(1));
                     e.setEmpNombre(rs.getString(2));
-                    e.setEmpApellidoMat(rs.getString(3));
-                    e.setEmpApellidoPat(rs.getString(4));
+                    e.setEmpApellidoPat(rs.getString(3));
+                    e.setEmpApellidoMat(rs.getString(4));
                     e.setEmpGen(rs.getString(5));
                     e.setEmpArea(rs.getString(6));
                     e.setEmpModContrat(rs.getString(7));
@@ -59,6 +61,8 @@ public class EmpleadoConsultas {
             //Este método va a retornar los datos del objeto
             return datos;
     }
+    
+    /*
     public int agregar(Persona p){
         String sql="insert into persona (clave,nombres,apellidos,domicilio,celular,email,fecnac,genero) values(?,?,?,?,?,?,?,?)";
         try {
@@ -72,7 +76,7 @@ public class EmpleadoConsultas {
              ps.setString(6, p.getEmail());
              ps.setDate(7, p.getFecnac());
              ps.setString(8, p.getGenero());
-             //llamamos el método para ejecutar la consulta SQl insert
+           
              ps.executeUpdate();
             
         } catch (Exception e) {
@@ -80,13 +84,13 @@ public class EmpleadoConsultas {
         }
         return 1;
     }
-    //Creamos el método actualizar con el parámetro al objeto persona
+  
     public int actualizar(Persona p){
         int r=0;
-        //Crear la variable tipo String para la consulta SQL
+       
         String sql="update persona set nombres=?, apellidos=?, domicilio=?, celular=?, email=?, fecnac=?, genero=? where clave=?";
         try {
-            //Hacer referencia a nuestra conexión
+            
             conexion = conectar.getConnection();
             ps = conexion.prepareStatement(sql);
             ps.setString(1, p.getNombres());
@@ -97,7 +101,7 @@ public class EmpleadoConsultas {
             ps.setDate(6, p.getFecnac());
             ps.setString(7, p.getGenero());
             ps.setInt(8, p.getClave());
-            //llamamos el método para ejecutar la consulta SQl insert
+           
             r=ps.executeUpdate();
             if (r==1){
                 return 1;
@@ -119,5 +123,5 @@ public class EmpleadoConsultas {
             System.err.println("Error, "+e);
         }
     }
-    
+    */
 }
