@@ -5,19 +5,25 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Conexion {
-     public static final String url ="jdbc:mysql://127.0.0.1:4406/bdperusac?autoReconnet=true&useSSL=false";
-    public static final String usuario = "root";
-    public static final String contraseña ="12345";
+     Connection miCon;
     
-    Connection conexion=null;
+    String controlador = "com.mysql.jdbc.Driver";
+    String url = "jdbc:mysql://localhost:3306/bdperusac";
+    String user = "root";
+    String pass = "12345";
     
     public Connection getConnection(){
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection(url, usuario, contraseña);
+            Class.forName(controlador);
+            miCon = DriverManager.getConnection(url,user,pass);
+            
+            if(miCon!=null){
+                System.out.println("CONEXION EXITOSA");
+            }
+            
         } catch (Exception e) {
-            System.err.println("Error, "+e);
+            System.out.println("Error en la conexion: " + e.getMessage());
         }
-        return conexion;
+        return miCon;
     }
 }

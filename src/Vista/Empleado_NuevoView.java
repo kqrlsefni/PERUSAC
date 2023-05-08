@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import static Vista.Dashboard.panelContenido;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
@@ -337,6 +338,9 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         btnGuardarNew.setMaximumSize(new java.awt.Dimension(115, 42));
         btnGuardarNew.setMinimumSize(new java.awt.Dimension(115, 42));
         btnGuardarNew.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarNewMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnGuardarNewMouseEntered(evt);
             }
@@ -374,13 +378,13 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
-        Vista.EmpleadoView modClie = new Vista.EmpleadoView();
-        modClie.setSize(700, 510);
-        modClie.setLocation(0, 0);
-        panelContenido.removeAll();
-        panelContenido.add(modClie, BorderLayout.CENTER);
-        panelContenido.revalidate();
-        panelContenido.repaint();
+        Vista.EmpleadoView vista = new Vista.EmpleadoView();
+        vista.setSize(700, 510);
+        vista.setLocation(0, 0);
+        Dashboard.panelContenido.removeAll();
+        Dashboard.panelContenido.add(vista, BorderLayout.CENTER);
+        Dashboard.panelContenido.revalidate();
+        Dashboard.panelContenido.repaint();
     }//GEN-LAST:event_btnRegresarMouseClicked
 
     private void btnRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseEntered
@@ -435,6 +439,23 @@ public class Empleado_NuevoView extends javax.swing.JPanel {
         IconGuardarNew.setVisible(true);
         IconGuardarNewHover.setVisible(false);
     }//GEN-LAST:event_btnGuardarNewMouseExited
+
+    private void btnGuardarNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarNewMouseClicked
+        Controlador c = new Controlador(this);
+        boolean add = c.Agregar();
+        if(add == true){
+            JOptionPane.showMessageDialog(null, "Se ingreso el empleado correctamente");
+            Vista.EmpleadoView vista = new Vista.EmpleadoView();
+            vista.setSize(700, 510);
+            vista.setLocation(0, 0);
+            Dashboard.panelContenido.removeAll();
+            Dashboard.panelContenido.add(vista, BorderLayout.CENTER);
+            Dashboard.panelContenido.revalidate();
+            Dashboard.panelContenido.repaint();
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al registrar");
+        }
+    }//GEN-LAST:event_btnGuardarNewMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -83,21 +83,18 @@ public class Main extends javax.swing.JFrame {
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_barMouseDragged
 
-    public static void main(String args[]) throws Exception {
+    public static void main(String args[]) {
 //        BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencySmallShadow;
 //        BeautyEyeLNFHelper.translucencyAtFrameInactive = false;
 //        UIManager.put("RootPane.setupButtonVisible", false);
 //        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
          
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Empleado_NuevoView vistaNuevo = new Empleado_NuevoView();
-                EmpleadoView vista = new EmpleadoView();
-                Controlador c = new Controlador(vistaNuevo,vista);
+
+                
+                
                 new Main().setVisible(true);
-            }
-        });
+            
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

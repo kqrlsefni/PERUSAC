@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.EmpleadoEditControlador;
 import static Vista.Dashboard.panelContenido;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
@@ -8,10 +9,15 @@ public class Empleado_EditarView extends javax.swing.JPanel {
 
 //    Modelo.ClienteMod c1 = new Modelo.ClienteMod();
 //    Entidad.ClienteEnt c11 = new Entidad.ClienteEnt();
-
-    public Empleado_EditarView() {
+    int idEmp = 0;
+    public Empleado_EditarView(int idEmp) {
         initComponents();
         deshabilitar();
+        this.idEmp = idEmp;
+    }
+
+    public Empleado_EditarView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void deshabilitar() {
@@ -71,33 +77,33 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         IconGuardarEdit = new javax.swing.JLabel();
         IconGuardarEditHover = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtdniingre = new javax.swing.JTextField();
+        txtDni = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtnombreingre = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtapellidosingre = new javax.swing.JTextField();
+        txtApePat = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtdireccioningre = new javax.swing.JTextField();
+        txtApeMat = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtcelularingre = new javax.swing.JTextField();
+        txtArea = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtedadingre3 = new javax.swing.JTextField();
+        txtSalario = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtedadingre4 = new javax.swing.JTextField();
         txtedadingre5 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtedadingre6 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cboModContrato = new javax.swing.JComboBox<>();
+        cboJorLaboral = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtedadingre7 = new javax.swing.JTextField();
         txtedadingre8 = new javax.swing.JTextField();
-        cboHospe = new javax.swing.JComboBox<>();
+        cboGenero = new javax.swing.JComboBox<>();
 
         setMaximumSize(new java.awt.Dimension(700, 510));
         setMinimumSize(new java.awt.Dimension(700, 510));
@@ -208,51 +214,51 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         jLabel1.setText("DNI:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
-        txtdniingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtdniingre.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtdniingre.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtdniingre.setPreferredSize(new java.awt.Dimension(210, 29));
-        txtdniingre.addActionListener(new java.awt.event.ActionListener() {
+        txtDni.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtDni.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtDni.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtDni.setPreferredSize(new java.awt.Dimension(210, 29));
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtdniingreActionPerformed(evt);
+                txtDniActionPerformed(evt);
             }
         });
-        jPanel1.add(txtdniingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 140, -1));
+        jPanel1.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 140, -1));
 
         jLabel3.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         jLabel3.setText("Nombres:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, -1));
 
-        txtnombreingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtnombreingre.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtnombreingre.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtnombreingre.setPreferredSize(new java.awt.Dimension(210, 29));
-        jPanel1.add(txtnombreingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
+        txtNombre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtNombre.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtNombre.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtNombre.setPreferredSize(new java.awt.Dimension(210, 29));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         jLabel4.setText("Apellido Pat:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
-        txtapellidosingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtapellidosingre.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtapellidosingre.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtapellidosingre.setPreferredSize(new java.awt.Dimension(210, 29));
-        txtapellidosingre.addActionListener(new java.awt.event.ActionListener() {
+        txtApePat.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtApePat.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtApePat.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtApePat.setPreferredSize(new java.awt.Dimension(210, 29));
+        txtApePat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtapellidosingreActionPerformed(evt);
+                txtApePatActionPerformed(evt);
             }
         });
-        jPanel1.add(txtapellidosingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 140, -1));
+        jPanel1.add(txtApePat, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 140, -1));
 
         jLabel5.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         jLabel5.setText("Apellido Mat:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
 
-        txtdireccioningre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtdireccioningre.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtdireccioningre.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtdireccioningre.setPreferredSize(new java.awt.Dimension(210, 29));
-        jPanel1.add(txtdireccioningre, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 210, -1));
+        txtApeMat.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtApeMat.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtApeMat.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtApeMat.setPreferredSize(new java.awt.Dimension(210, 29));
+        jPanel1.add(txtApeMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 210, -1));
 
         jLabel6.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         jLabel6.setText("Genero:");
@@ -262,11 +268,11 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         jLabel7.setText("F. Fin:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
 
-        txtcelularingre.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtcelularingre.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtcelularingre.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtcelularingre.setPreferredSize(new java.awt.Dimension(210, 29));
-        jPanel1.add(txtcelularingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
+        txtArea.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtArea.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtArea.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtArea.setPreferredSize(new java.awt.Dimension(210, 29));
+        jPanel1.add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         jLabel8.setText("Mod. Contrato:");
@@ -284,11 +290,11 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         jLabel11.setText("Salario:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
-        txtedadingre3.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtedadingre3.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtedadingre3.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtedadingre3.setPreferredSize(new java.awt.Dimension(210, 29));
-        jPanel1.add(txtedadingre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 140, -1));
+        txtSalario.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
+        txtSalario.setMaximumSize(new java.awt.Dimension(210, 29));
+        txtSalario.setMinimumSize(new java.awt.Dimension(210, 29));
+        txtSalario.setPreferredSize(new java.awt.Dimension(210, 29));
+        jPanel1.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 140, -1));
 
         jLabel12.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         jLabel12.setText("Foto:");
@@ -321,11 +327,11 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         });
         jPanel1.add(txtedadingre6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 210, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plazo Determinado", "Plazo Indeterminado" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 140, -1));
+        cboModContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plazo Determinado", "Plazo Indeterminado" }));
+        jPanel1.add(cboModContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 140, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiempo Completo", "Tiempo Parcial" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 140, -1));
+        cboJorLaboral.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiempo Completo", "Tiempo Parcial" }));
+        jPanel1.add(cboJorLaboral, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 140, -1));
 
         jLabel14.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         jLabel14.setText("Area:");
@@ -352,13 +358,13 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         txtedadingre8.setPreferredSize(new java.awt.Dimension(210, 29));
         jPanel1.add(txtedadingre8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 50, -1));
 
-        cboHospe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
-        cboHospe.addItemListener(new java.awt.event.ItemListener() {
+        cboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
+        cboGenero.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cboHospeItemStateChanged(evt);
+                cboGeneroItemStateChanged(evt);
             }
         });
-        jPanel1.add(cboHospe, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 140, -1));
+        jPanel1.add(cboGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 140, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -403,18 +409,20 @@ public class Empleado_EditarView extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRegresarMouseExited
 
     private void btnGuardarEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarEditMouseClicked
-        if(validar().equals("")){
-            //c1.editarcliente(txtdniedicli.getText(), txtnombresedicli.getText(), txtapellidosedicli.getText(),txtdireccionedicli.getText(), txtedadedicli.getText(), txtcelularedicli.getText());
-            Vista.EmpleadoView modClie = new Vista.EmpleadoView();
-
-            modClie.setSize(700, 510);
-            modClie.setLocation(0, 0);
-            panelContenido.removeAll();
-            panelContenido.add(modClie, BorderLayout.CENTER);
-            panelContenido.revalidate();
-            panelContenido.repaint();
+        EmpleadoEditControlador eec = new EmpleadoEditControlador(this);
+        boolean edit = eec.Actualizar(idEmp);
+        
+        if(edit == true){
+            JOptionPane.showMessageDialog(null, "Se actualizo el empleado correctamente");
+            Vista.EmpleadoView vista = new Vista.EmpleadoView();
+            vista.setSize(700, 510);
+            vista.setLocation(0, 0);
+            Dashboard.panelContenido.removeAll();
+            Dashboard.panelContenido.add(vista, BorderLayout.CENTER);
+            Dashboard.panelContenido.revalidate();
+            Dashboard.panelContenido.repaint();
         }else{
-           JOptionPane.showMessageDialog(null, "Falta ingresar"+validar());
+            JOptionPane.showMessageDialog(null, "Error al registrar");
         }
     }//GEN-LAST:event_btnGuardarEditMouseClicked
 
@@ -428,30 +436,30 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         IconGuardarEditHover.setVisible(false);
     }//GEN-LAST:event_btnGuardarEditMouseExited
 
-    private void cboHospeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboHospeItemStateChanged
+    private void cboGeneroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboGeneroItemStateChanged
         //        if (cboHospe.getSelectedIndex() >= 0) {
             //            String hosNombre = cboHospe.getSelectedItem().toString();
             //            cboTipo.setEnabled(true);
             //            cboTipo.removeAllItems();
             //            resNue.llenartipohabitacion(cboTipo, hosNombre);
             //        }
-    }//GEN-LAST:event_cboHospeItemStateChanged
+    }//GEN-LAST:event_cboGeneroItemStateChanged
 
     private void txtedadingre6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtedadingre6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtedadingre6ActionPerformed
 
-    private void txtapellidosingreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapellidosingreActionPerformed
+    private void txtApePatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApePatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtapellidosingreActionPerformed
+    }//GEN-LAST:event_txtApePatActionPerformed
 
     private void txtedadingre7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtedadingre7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtedadingre7ActionPerformed
 
-    private void txtdniingreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdniingreActionPerformed
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtdniingreActionPerformed
+    }//GEN-LAST:event_txtDniActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -462,9 +470,9 @@ public class Empleado_EditarView extends javax.swing.JPanel {
     private javax.swing.JLabel IconRegresarHover;
     private javax.swing.JPanel btnGuardarEdit;
     private javax.swing.JPanel btnRegresar;
-    private javax.swing.JComboBox<Object> cboHospe;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    public javax.swing.JComboBox<Object> cboGenero;
+    public javax.swing.JComboBox<String> cboJorLaboral;
+    public javax.swing.JComboBox<String> cboModContrato;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -481,16 +489,16 @@ public class Empleado_EditarView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtapellidosingre;
-    private javax.swing.JTextField txtcelularingre;
-    private javax.swing.JTextField txtdireccioningre;
-    private javax.swing.JTextField txtdniingre;
-    private javax.swing.JTextField txtedadingre3;
+    public javax.swing.JTextField txtApeMat;
+    public javax.swing.JTextField txtApePat;
+    public javax.swing.JTextField txtArea;
+    public javax.swing.JTextField txtDni;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtSalario;
     private javax.swing.JTextField txtedadingre4;
     private javax.swing.JTextField txtedadingre5;
     private javax.swing.JTextField txtedadingre6;
     private javax.swing.JTextField txtedadingre7;
     private javax.swing.JTextField txtedadingre8;
-    private javax.swing.JTextField txtnombreingre;
     // End of variables declaration//GEN-END:variables
 }

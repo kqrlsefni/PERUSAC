@@ -369,15 +369,16 @@ public class Dashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_txtReporteMouseExited
 
     private void txtEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmpleadoMouseClicked
-        Vista.EmpleadoView modClie = new Vista.EmpleadoView();
-
-        modClie.setSize(700, 510);
-        modClie.setLocation(0, 0);
-
-        panelContenido.removeAll();
-        panelContenido.add(modClie, BorderLayout.CENTER);
-        panelContenido.revalidate();
-        panelContenido.repaint();
+        
+        Vista.EmpleadoView vista = new Vista.EmpleadoView();
+        
+        vista.setSize(700, 510);
+        vista.setLocation(0, 0);
+        Dashboard.panelContenido.removeAll();
+        Dashboard.panelContenido.add(vista, BorderLayout.CENTER);
+        Dashboard.panelContenido.revalidate();
+        Dashboard.panelContenido.repaint();
+        
     }//GEN-LAST:event_txtEmpleadoMouseClicked
 
     private void txtBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBitacoraMouseClicked
@@ -495,12 +496,12 @@ public class Dashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_txtReporteMousePressed
 
     private void btnEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadoMouseClicked
-        Vista.EmpleadoView modClie = new Vista.EmpleadoView();
+        Vista.EmpleadoView vist = new Vista.EmpleadoView();
 
-        modClie.setSize(700, 510);
-        modClie.setLocation(0, 0);
+        vist.setSize(700, 510);
+        vist.setLocation(0, 0);
         panelContenido.removeAll();
-        panelContenido.add(modClie, BorderLayout.CENTER);
+        panelContenido.add(vist, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnEmpleadoMouseClicked

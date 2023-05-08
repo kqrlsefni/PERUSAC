@@ -1,23 +1,29 @@
 package Vista;
 
 //import static Vista.ModuloLogin.txtUsuario;
+import Controlador.Controlador;
+import Controlador.EmpleadoControlador;
+import Controlador.EmpleadoEditControlador;
 import java.awt.BorderLayout;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import modelo.Empleado;
+import modelo.EmpleadoConsultas;
 
 public class EmpleadoView extends javax.swing.JPanel {
 
-//    Entidad.ClienteEnt c1 = new Entidad.ClienteEnt();
-//    Modelo.ClienteMod c11 = new Modelo.ClienteMod();
-
+    Empleado objEmpleado = new Empleado();
+    EmpleadoConsultas objEmpleadoConsultas = new EmpleadoConsultas();
+    
     public EmpleadoView() {
         initComponents();
         setSize(700, 510);
-        Vector v = new Vector();
-        mostrarEmpleados(v);
+        mostrarEmpleados();
         mostrar();
+        
 
     }
 
@@ -32,8 +38,9 @@ public class EmpleadoView extends javax.swing.JPanel {
         Textp txtu = new Textp("Buscar DNI / Nombre", txtBuscarClie);
     }
 
-    public void mostrarEmpleados(Vector vec) {
-        Object objeto[][] = new Object[vec.size()][10];
+    public void mostrarEmpleados() {
+        List<Empleado> lista = objEmpleadoConsultas.listar();
+        Object objeto[][] = new Object[lista.size()][10];
         tblEmpleados.setModel(new DefaultTableModel(objeto, new String[]{"CODIGO", "DNI", "NOMBRES", "APELLIDOS", "GENERO", "ÁREA", "MODALIDAD CONTRATO", "JORNADA LABORAL","SALARIO","FECHA INGRESO"}){
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -46,18 +53,21 @@ public class EmpleadoView extends javax.swing.JPanel {
             
         });
         jScrollPane1.setViewportView(tblEmpleados);
-//        for (int i = 0; i < vec.size(); i++) {
-//            c1 = (Entidad.ClienteEnt) vec.elementAt(i);
-//            tblclientes.clearSelection();
-//            tblclientes.setValueAt(c1.getClienId(), i, 0);
-//            tblclientes.setValueAt(c1.getClienDNI(), i, 1);
-//            tblclientes.setValueAt(c1.getClienNom(), i, 2);
-//            tblclientes.setValueAt(c1.getClienApe(), i, 3);
-//            tblclientes.setValueAt(c1.getClienDirec(), i, 4);
-//            tblclientes.setValueAt(c1.getClienEdad(), i, 5);
-//            tblclientes.setValueAt(c1.getClienCel(), i, 6);
-//
-//        }
+        for (int i = 0; i < lista.size(); i++) {
+            
+            tblEmpleados.clearSelection();
+            tblEmpleados.setValueAt(lista.get(i).getEmpCodigo(), i, 0);
+            tblEmpleados.setValueAt(lista.get(i).getEmpDni(), i, 1);
+            tblEmpleados.setValueAt(lista.get(i).getEmpNombre(), i, 2);
+            tblEmpleados.setValueAt(lista.get(i).getEmpApellidoPat(), i, 3);
+            tblEmpleados.setValueAt(lista.get(i).getEmpGen(), i, 4);
+            tblEmpleados.setValueAt(lista.get(i).getEmpArea(), i, 5);
+            tblEmpleados.setValueAt(lista.get(i).getEmpModContrato(), i, 6);
+            tblEmpleados.setValueAt(lista.get(i).getEmpJornadaLab(), i, 7);
+            tblEmpleados.setValueAt(lista.get(i).getEmpSalario(), i, 8);
+            tblEmpleados.setValueAt(lista.get(i).getEmpFechaIngreso(), i, 9);
+
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -362,25 +372,37 @@ public class EmpleadoView extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNuevoMouseExited
 
     private void btnNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseClicked
-        Vista.Empleado_NuevoView vCliNue = new Vista.Empleado_NuevoView();
-
-        vCliNue.setSize(700, 510);
-        vCliNue.setLocation(0, 0);
+        Vista.Empleado_NuevoView vistaEmpNuevo = new Vista.Empleado_NuevoView();
+         
+        vistaEmpNuevo.setSize(700, 510);
+        vistaEmpNuevo.setLocation(0, 0);
         Dashboard.panelContenido.removeAll();
-        Dashboard.panelContenido.add(vCliNue, BorderLayout.CENTER);
+        Dashboard.panelContenido.add(vistaEmpNuevo, BorderLayout.CENTER);
         Dashboard.panelContenido.revalidate();
         Dashboard.panelContenido.repaint();
+       
     }//GEN-LAST:event_btnNuevoMouseClicked
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
-        Vista.Empleado_EditarView vCliEdi = new Vista.Empleado_EditarView();
+        int idEmp;
+        int fila = tblEmpleados.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione un registro", "Mensaje", JOptionPane.WARNING_MESSAGE);
+        } else {
+            idEmp = Integer.parseInt(tblEmpleados.getValueAt(fila, 0).toString());
+            Vista.Empleado_EditarView vistaEmpEditar = new Vista.Empleado_EditarView(idEmp);
 
-        vCliEdi.setSize(700, 510);
-        vCliEdi.setLocation(0, 0);
-        Dashboard.panelContenido.removeAll();
-        Dashboard.panelContenido.add(vCliEdi, BorderLayout.CENTER);
-        Dashboard.panelContenido.revalidate();
-        Dashboard.panelContenido.repaint();
+            vistaEmpEditar.setSize(700, 510);
+            vistaEmpEditar.setLocation(0, 0);
+            Dashboard.panelContenido.removeAll();
+            Dashboard.panelContenido.add(vistaEmpEditar, BorderLayout.CENTER);
+            Dashboard.panelContenido.revalidate();
+            Dashboard.panelContenido.repaint();
+            System.out.println("ID Empleado: " + idEmp);
+            EmpleadoEditControlador eec = new EmpleadoEditControlador(vistaEmpEditar);
+            eec.llenarCampos(idEmp);
+        }
+        
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
@@ -394,15 +416,27 @@ public class EmpleadoView extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditarMouseExited
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        int idcliente;
+        int idEmp;
         int fila = tblEmpleados.getSelectedRow();
         if (fila == -1) {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila en la tabla");
+            JOptionPane.showMessageDialog(null, "Seleccione un registro", "Mensaje", JOptionPane.WARNING_MESSAGE);
         } else {
-            idcliente = Integer.parseInt(tblEmpleados.getValueAt(fila, 0).toString());
+            idEmp = Integer.parseInt(tblEmpleados.getValueAt(fila, 0).toString());
+            int res = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar el regitro?", "ELIMINAR EMPLEADO", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(res == 0){
+                EmpleadoControlador ec = new EmpleadoControlador();
+                boolean d = ec.Eliminar(idEmp);
+                if(d == true){
+                JOptionPane.showMessageDialog(null, "Se elimino correctmente");
+                mostrarEmpleados();
+                }else{
+                 JOptionPane.showMessageDialog(null, "Error al eliminar");
+                }
+                
+            }
 //            c11.eliminarcliente(idcliente);
 //            mostrarclientes(c11.mostrarclientes());
-            System.out.println("ID CLIENTE: " + idcliente);
+            System.out.println("ID Empleado: " + idEmp);
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
