@@ -14,7 +14,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         setLocationRelativeTo(null);
-        contenido.setSize(900,540);
+        contenido.setSize(1100,540);
         contenido.setLocation(0,0);
         bar.setOpaque(false);
 
@@ -35,6 +35,8 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
+        setMinimumSize(new java.awt.Dimension(1100, 540));
+        setPreferredSize(new java.awt.Dimension(1100, 540));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -50,24 +52,25 @@ public class Main extends javax.swing.JFrame {
             }
         });
         bar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(bar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 30));
+        getContentPane().add(bar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 30));
 
         layout.setBackground(new java.awt.Color(255, 255, 255));
-        layout.setMaximumSize(new java.awt.Dimension(900, 540));
-        layout.setMinimumSize(new java.awt.Dimension(900, 540));
+        layout.setMaximumSize(new java.awt.Dimension(1100, 540));
+        layout.setMinimumSize(new java.awt.Dimension(1100, 540));
+        layout.setPreferredSize(new java.awt.Dimension(1100, 540));
 
         javax.swing.GroupLayout layoutLayout = new javax.swing.GroupLayout(layout);
         layout.setLayout(layoutLayout);
         layoutLayout.setHorizontalGroup(
             layoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 1100, Short.MAX_VALUE)
         );
         layoutLayout.setVerticalGroup(
             layoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 540, Short.MAX_VALUE)
         );
 
-        getContentPane().add(layout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 540));
+        getContentPane().add(layout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

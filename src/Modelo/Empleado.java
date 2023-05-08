@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -25,11 +25,12 @@ public class Empleado {
     private Float empSalario;
     private Date empFechaIngreso;
     private int empEstado;
-    
+    private Date fechaInicio;
+    private Date fechaFin;
     
     public Empleado(){}
 
-    public Empleado(int empCodigo, String empDni, String empNombre, String empApellidoMat, String empApellidoPat, String empGen, String empArea, String empModContrato, String empJornadaLab, Date empFechaNac, String empFoto, Float empSalario, Date empFechaIngreso, int empEstado) {
+    public Empleado(int empCodigo, String empDni, String empNombre, String empApellidoMat, String empApellidoPat, String empGen, String empArea, String empModContrato, String empJornadaLab, Date empFechaNac, String empFoto, Float empSalario, Date empFechaIngreso, int empEstado, Date fechaInicio, Date fechaFin) {
         this.empCodigo = empCodigo;
         this.empDni = empDni;
         this.empNombre = empNombre;
@@ -44,7 +45,11 @@ public class Empleado {
         this.empSalario = empSalario;
         this.empFechaIngreso = empFechaIngreso;
         this.empEstado = empEstado;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
     }
+
+    
 
     
 
@@ -112,6 +117,22 @@ public class Empleado {
 
     public void setEmpModContrato(String empModContrat) {
         this.empModContrato = empModContrat;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     

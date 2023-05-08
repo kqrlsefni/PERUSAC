@@ -3,7 +3,7 @@ package Controlador;
 
 import Vista.Empleado_EditarView;
 import Vista.Empleado_NuevoView;
-import java.sql.Date;
+import java.util.Date;
 import modelo.Empleado;
 import modelo.EmpleadoConsultas;
 
@@ -19,7 +19,8 @@ public class EmpleadoEditControlador {
     
     public boolean Actualizar(int id){
         boolean edit = false;
-        String dni = vistaEditar.txtDni.getText();
+        try {
+            String dni = vistaEditar.txtDni.getText();
         String nombre = vistaEditar.txtNombre.getText();
         String apePat = vistaEditar.txtApePat.getText();
         String apeMat = vistaEditar.txtApeMat.getText();
@@ -28,8 +29,8 @@ public class EmpleadoEditControlador {
         String genero = (String) vistaEditar.cboGenero.getSelectedItem();
         String modContrato = (String) vistaEditar.cboModContrato.getSelectedItem();
         String jorLaboral = (String) vistaEditar.cboJorLaboral.getSelectedItem();
-//        Date fecNacimiento = new Date(2023,7,5);
-//        Date fecIngrso = new Date(2023,7,5);
+        Date fecNacimiento = vistaEditar.txtFecNacimiento.getDate();
+        Date fecIngrso = vistaEditar.txtFecIngreso.getDate();
         
         
         objEmpleado.setEmpDni(dni);
@@ -42,15 +43,17 @@ public class EmpleadoEditControlador {
         objEmpleado.setEmpModContrato(modContrato);
         objEmpleado.setEmpJornadaLab(jorLaboral);
         objEmpleado.setEmpCodigo(id);
-//        objEmpleado.setEmpFechaNac(fecNacimiento);
-//        objEmpleado.setEmpFechaIngreso(fecIngrso);
+        objEmpleado.setEmpFechaNac(fecNacimiento);
+        objEmpleado.setEmpFechaIngreso(fecIngrso);
         
-        
-  
         int res = objEmpleadoConsultas.actualizar(objEmpleado);
         if(res==1){
             edit = true; 
         }
+        } catch (Exception e) {
+            System.out.println("error en: " + e.getMessage());
+        }
+        
         return edit;   
         
     }
@@ -66,5 +69,7 @@ public class EmpleadoEditControlador {
         vistaEditar.cboGenero.setSelectedItem(emp.getEmpGen());
         vistaEditar.cboModContrato.setSelectedItem(emp.getEmpModContrato());
         vistaEditar.cboJorLaboral.setSelectedItem(emp.getEmpJornadaLab());
+        vistaEditar.txtFecNacimiento.setDate(emp.getEmpFechaNac());
+        vistaEditar.txtFecIngreso.setDate(emp.getEmpFechaIngreso());
     }
 }

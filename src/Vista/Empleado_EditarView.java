@@ -93,26 +93,26 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         txtSalario = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtedadingre4 = new javax.swing.JTextField();
-        txtedadingre5 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        txtedadingre6 = new javax.swing.JTextField();
         cboModContrato = new javax.swing.JComboBox<>();
         cboJorLaboral = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtedadingre7 = new javax.swing.JTextField();
-        txtedadingre8 = new javax.swing.JTextField();
         cboGenero = new javax.swing.JComboBox<>();
+        txtFecNacimiento = new com.toedter.calendar.JDateChooser();
+        txtFecIngreso = new com.toedter.calendar.JDateChooser();
+        txtFecInicio = new com.toedter.calendar.JDateChooser();
+        txtFecFin = new com.toedter.calendar.JDateChooser();
 
-        setMaximumSize(new java.awt.Dimension(700, 510));
-        setMinimumSize(new java.awt.Dimension(700, 510));
-        setPreferredSize(new java.awt.Dimension(700, 510));
+        setMaximumSize(new java.awt.Dimension(900, 510));
+        setMinimumSize(new java.awt.Dimension(900, 510));
+        setPreferredSize(new java.awt.Dimension(900, 510));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMaximumSize(new java.awt.Dimension(700, 510));
-        jPanel1.setMinimumSize(new java.awt.Dimension(700, 510));
-        jPanel1.setPreferredSize(new java.awt.Dimension(700, 510));
+        jPanel1.setMaximumSize(new java.awt.Dimension(900, 510));
+        jPanel1.setMinimumSize(new java.awt.Dimension(900, 510));
+        jPanel1.setPreferredSize(new java.awt.Dimension(900, 510));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("SF UI Display", 1, 18)); // NOI18N
@@ -266,7 +266,7 @@ public class Empleado_EditarView extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
         jLabel7.setText("F. Fin:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
 
         txtArea.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
         txtArea.setMaximumSize(new java.awt.Dimension(210, 29));
@@ -300,34 +300,16 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         jLabel12.setText("Foto:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, 20));
 
-        txtedadingre4.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtedadingre4.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtedadingre4.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtedadingre4.setPreferredSize(new java.awt.Dimension(210, 29));
-        jPanel1.add(txtedadingre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 50, -1));
-
-        txtedadingre5.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtedadingre5.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtedadingre5.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtedadingre5.setPreferredSize(new java.awt.Dimension(210, 29));
-        jPanel1.add(txtedadingre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 140, -1));
-
         jLabel13.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel13.setText("Fecha Ingreso:");
+        jLabel13.setText("Fec. Ingreso:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
 
-        txtedadingre6.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtedadingre6.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtedadingre6.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtedadingre6.setPreferredSize(new java.awt.Dimension(210, 29));
-        txtedadingre6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtedadingre6ActionPerformed(evt);
+        cboModContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plazo Determinado", "Plazo Indeterminado" }));
+        cboModContrato.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboModContratoItemStateChanged(evt);
             }
         });
-        jPanel1.add(txtedadingre6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 210, -1));
-
-        cboModContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plazo Determinado", "Plazo Indeterminado" }));
         jPanel1.add(cboModContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 140, -1));
 
         cboJorLaboral.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiempo Completo", "Tiempo Parcial" }));
@@ -352,12 +334,6 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         });
         jPanel1.add(txtedadingre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 210, -1));
 
-        txtedadingre8.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtedadingre8.setMaximumSize(new java.awt.Dimension(210, 29));
-        txtedadingre8.setMinimumSize(new java.awt.Dimension(210, 29));
-        txtedadingre8.setPreferredSize(new java.awt.Dimension(210, 29));
-        jPanel1.add(txtedadingre8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 50, -1));
-
         cboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
         cboGenero.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -366,15 +342,28 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         });
         jPanel1.add(cboGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 140, -1));
 
+        txtFecNacimiento.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(txtFecNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 140, -1));
+
+        txtFecIngreso.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(txtFecIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 210, -1));
+
+        txtFecInicio.setAutoscrolls(true);
+        txtFecInicio.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(txtFecInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 110, -1));
+
+        txtFecFin.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(txtFecFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 110, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -383,14 +372,14 @@ public class Empleado_EditarView extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
         Vista.EmpleadoView modClie = new Vista.EmpleadoView();
-        modClie.setSize(700, 510);
+        modClie.setSize(900, 510);
         modClie.setLocation(0, 0);
         panelContenido.removeAll();
         panelContenido.add(modClie, BorderLayout.CENTER);
@@ -415,7 +404,7 @@ public class Empleado_EditarView extends javax.swing.JPanel {
         if(edit == true){
             JOptionPane.showMessageDialog(null, "Se actualizo el empleado correctamente");
             Vista.EmpleadoView vista = new Vista.EmpleadoView();
-            vista.setSize(700, 510);
+            vista.setSize(900, 510);
             vista.setLocation(0, 0);
             Dashboard.panelContenido.removeAll();
             Dashboard.panelContenido.add(vista, BorderLayout.CENTER);
@@ -445,10 +434,6 @@ public class Empleado_EditarView extends javax.swing.JPanel {
             //        }
     }//GEN-LAST:event_cboGeneroItemStateChanged
 
-    private void txtedadingre6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtedadingre6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtedadingre6ActionPerformed
-
     private void txtApePatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApePatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApePatActionPerformed
@@ -460,6 +445,18 @@ public class Empleado_EditarView extends javax.swing.JPanel {
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDniActionPerformed
+
+    private void cboModContratoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboModContratoItemStateChanged
+        if(cboModContrato.getSelectedIndex()==0){
+            txtFecInicio.setEnabled(true);
+            txtFecFin.setEnabled(true);
+        }
+        if(cboModContrato.getSelectedIndex()==1){
+            txtFecInicio.setEnabled(true);
+            txtFecFin.setEnabled(false);
+            
+        }
+    }//GEN-LAST:event_cboModContratoItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -493,12 +490,12 @@ public class Empleado_EditarView extends javax.swing.JPanel {
     public javax.swing.JTextField txtApePat;
     public javax.swing.JTextField txtArea;
     public javax.swing.JTextField txtDni;
+    public com.toedter.calendar.JDateChooser txtFecFin;
+    public com.toedter.calendar.JDateChooser txtFecIngreso;
+    public com.toedter.calendar.JDateChooser txtFecInicio;
+    public com.toedter.calendar.JDateChooser txtFecNacimiento;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtSalario;
-    private javax.swing.JTextField txtedadingre4;
-    private javax.swing.JTextField txtedadingre5;
-    private javax.swing.JTextField txtedadingre6;
     private javax.swing.JTextField txtedadingre7;
-    private javax.swing.JTextField txtedadingre8;
     // End of variables declaration//GEN-END:variables
 }

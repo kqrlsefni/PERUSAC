@@ -17,7 +17,7 @@ public class Dashboard extends javax.swing.JPanel {
 
     public Dashboard() {
         initComponents();
-        setSize(900, 50);
+        setSize(1100, 50);
         //Main.bar.setBackground(new Color(0,66,111));
         txtNombreUsuario.setText("Oscar");
     }
@@ -44,11 +44,12 @@ public class Dashboard extends javax.swing.JPanel {
         panelContenido = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1100, 540));
 
         Header.setBackground(new java.awt.Color(72, 143, 177));
-        Header.setMaximumSize(new java.awt.Dimension(900, 30));
-        Header.setMinimumSize(new java.awt.Dimension(900, 30));
-        Header.setPreferredSize(new java.awt.Dimension(900, 30));
+        Header.setMaximumSize(new java.awt.Dimension(1100, 30));
+        Header.setMinimumSize(new java.awt.Dimension(1100, 30));
+        Header.setPreferredSize(new java.awt.Dimension(1100, 30));
 
         txtIconUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtIconUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logos/userLogo.png"))); // NOI18N
@@ -297,13 +298,14 @@ public class Dashboard extends javax.swing.JPanel {
         sideBar.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
 
         panelContenido.setBackground(new java.awt.Color(255, 255, 255));
-        panelContenido.setMaximumSize(new java.awt.Dimension(700, 510));
+        panelContenido.setMaximumSize(new java.awt.Dimension(900, 510));
+        panelContenido.setPreferredSize(new java.awt.Dimension(900, 510));
 
         javax.swing.GroupLayout panelContenidoLayout = new javax.swing.GroupLayout(panelContenido);
         panelContenido.setLayout(panelContenidoLayout);
         panelContenidoLayout.setHorizontalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         panelContenidoLayout.setVerticalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,7 +374,7 @@ public class Dashboard extends javax.swing.JPanel {
         
         Vista.EmpleadoView vista = new Vista.EmpleadoView();
         
-        vista.setSize(700, 510);
+        vista.setSize(900, 510);
         vista.setLocation(0, 0);
         Dashboard.panelContenido.removeAll();
         Dashboard.panelContenido.add(vista, BorderLayout.CENTER);

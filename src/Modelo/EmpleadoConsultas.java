@@ -5,7 +5,7 @@
 package modelo;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -65,6 +65,10 @@ public class EmpleadoConsultas {
     public int agregar(Empleado p){
         String sql="insert into empleado (EmpDni,EmpNombres,EmpApellidoPaterno,EmpApellidoMaterno,EmpGenero,EmpArea,EmpModalidadContrato,EmpJornadaLaboral,EmpFecNacimiento,"
                 + "EmpSalario,EmpFechaIngreso,EmpEstado) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sqlSalario = "insert into salariobitacora (SalEmpleado,SalSalario) values(?,?)";
+        String sqlJornada= "insert into jornada_laboral_bitacora (JorEmpleado,JorJornada) values(?,?)";
+        String sqlArea = "insert into areabitacora (AreEmpleado,AreArea) values(?,?)";
+        String sqlModalidad = "insert into modalidad_contrato_bitacora (ModEmpleado,ModModalida,ModFecInicio,ModFecFin) values(?,?,?,?)";
         try {
              conexion = conectar.getConnection();
              ps = conexion.prepareStatement(sql);
@@ -76,14 +80,32 @@ public class EmpleadoConsultas {
              ps.setString(6, p.getEmpArea());
              ps.setString(7, p.getEmpModContrato());
              ps.setString(8, p.getEmpJornadaLab());
-             ps.setDate(9, p.getEmpFechaNac());
+             ps.setDate(9, new java.sql.Date(p.getEmpFechaNac().getTime()));
              //ps.setString(10, p.getEmpFoto());
              ps.setDouble(10, p.getEmpSalario());
-             ps.setDate(11, p.getEmpFechaIngreso());
+             ps.setDate(11, new java.sql.Date(p.getEmpFechaIngreso().getTime()));
              ps.setInt(12, p.getEmpEstado());
              //llamamos el método para ejecutar la consulta SQl insert
              ps.executeUpdate();
-            
+             rs = ps.executeQuery();
+             
+             ps = conexion.prepareStatement(sqlSalario);
+             ps.setInt(1, rs.getInt(1));
+             ps.setDouble(2, p.getEmpSalario());
+             
+             ps = conexion.prepareStatement(sqlJornada);
+             ps.setInt(1, rs.getInt(1));
+             ps.setString(2, p.getEmpJornadaLab());
+             
+             ps = conexion.prepareStatement(sqlArea);
+             ps.setInt(1, rs.getInt(1));
+             ps.setString(2, p.getEmpArea());
+             
+             ps = conexion.prepareStatement(sqlModalidad);
+             ps.setInt(1, rs.getInt(1));
+             ps.setString(2, p.getEmpModContrato());
+             ps.setDate(3, new java.sql.Date(p.getFechaInicio().getTime()));
+             ps.setDate(4, new java.sql.Date(p.getFechaFin().getTime()));
         } catch (Exception e) {
             System.err.println("Error, "+e);
         }
@@ -94,7 +116,7 @@ public class EmpleadoConsultas {
         int r=0;
         //Crear la variable tipo String para la consulta SQL
         String sql="update empleado set EmpDni=?,EmpNombres=?,EmpApellidoPaterno=?,EmpApellidoMaterno=?,EmpGenero=?,EmpArea=?,EmpModalidadContrato=?,EmpJornadaLaboral=?,"
-                + "EmpSalario=? where EmpCodigo=?";
+                + "EmpFecNacimiento=?, EmpSalario=?, EmpFechaIngreso=? where EmpCodigo=?";
         try {
             //Hacer referencia a nuestra conexión
             conexion = conectar.getConnection();
@@ -107,11 +129,11 @@ public class EmpleadoConsultas {
             ps.setString(6, p.getEmpArea());
             ps.setString(7, p.getEmpModContrato());
             ps.setString(8, p.getEmpJornadaLab());
-//            ps.setDate(9, p.getEmpFechaNac());
+            ps.setDate(9, new java.sql.Date(p.getEmpFechaNac().getTime()));
             //ps.setString(10, p.getEmpFoto());
-            ps.setDouble(9, p.getEmpSalario());
-//            ps.setDate(11, p.getEmpFechaIngreso());
-            ps.setInt(10, p.getEmpCodigo());
+            ps.setDouble(10, p.getEmpSalario());
+            ps.setDate(11, new java.sql.Date(p.getEmpFechaIngreso().getTime()));
+            ps.setInt(12, p.getEmpCodigo());
             
             //llamamos el método para ejecutar la consulta SQl insert
             r=ps.executeUpdate();
@@ -147,7 +169,7 @@ public class EmpleadoConsultas {
     
     public Empleado buscar(int id){
         Empleado emp = new Empleado();
-        String sql = "select * from empleado where EmpCodigo = ? and EmpEstado = 1";
+        String sql = "select * from empleado e inner join modalidad_contrato_bitacora m on m.ModEmpleado = e.EmpCodigo where EmpCodigo = ? and EmpEstado = 1 order by m.ModId desc";
             try {
                 
                 conexion = conectar.getConnection();
