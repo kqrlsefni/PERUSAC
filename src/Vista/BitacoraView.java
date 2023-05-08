@@ -24,12 +24,10 @@ public class BitacoraView extends javax.swing.JPanel {
     public BitacoraView() {
         initComponents();
         mostrarEmpleados();
-        mostrar();
+        
     }
 
-    void mostrar() {
-        Textp txtu = new Textp("Buscar DNI / Nombre", txtBuscarClie);
-    }
+    
     
     public void mostrarEmpleados() {
         List<Empleado> lista = objEmpleadoConsultas.listar();
@@ -67,8 +65,6 @@ public class BitacoraView extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        txtBuscarClie = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmpleados = new javax.swing.JTable();
         btnPagar = new javax.swing.JPanel();
@@ -84,46 +80,6 @@ public class BitacoraView extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SF UI Display", 1, 20)); // NOI18N
         jLabel1.setText("HISTORIAL DE CAMBIOS");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 31, -1, -1));
-
-        jPanel3.setBackground(new java.awt.Color(234, 230, 221));
-        jPanel3.setMaximumSize(new java.awt.Dimension(200, 42));
-        jPanel3.setMinimumSize(new java.awt.Dimension(200, 42));
-
-        txtBuscarClie.setBackground(new java.awt.Color(234, 230, 221));
-        txtBuscarClie.setFont(new java.awt.Font("SF UI Display", 0, 14)); // NOI18N
-        txtBuscarClie.setBorder(null);
-        txtBuscarClie.setMaximumSize(new java.awt.Dimension(150, 20));
-        txtBuscarClie.setMinimumSize(new java.awt.Dimension(150, 20));
-        txtBuscarClie.setPreferredSize(new java.awt.Dimension(150, 20));
-        txtBuscarClie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarClieActionPerformed(evt);
-            }
-        });
-        txtBuscarClie.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBuscarClieKeyTyped(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(txtBuscarClie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtBuscarClie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, -1, 40));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane1.setMaximumSize(new java.awt.Dimension(660, 300));
@@ -180,14 +136,6 @@ public class BitacoraView extends javax.swing.JPanel {
         add(btnPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 140, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBuscarClieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarClieActionPerformed
-
-    }//GEN-LAST:event_txtBuscarClieActionPerformed
-
-    private void txtBuscarClieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarClieKeyTyped
-        //mostrarclientes(c11.buscarclienteprincipal(txtBuscarClie.getText()));
-    }//GEN-LAST:event_txtBuscarClieKeyTyped
-
     private void btnPagarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagarMouseClicked
         int idEmp;
         int fila = tblEmpleados.getSelectedRow();
@@ -215,9 +163,7 @@ public class BitacoraView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel3;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tblEmpleados;
-    private javax.swing.JTextField txtBuscarClie;
     // End of variables declaration//GEN-END:variables
 }
