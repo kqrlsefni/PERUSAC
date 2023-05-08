@@ -5,24 +5,21 @@
  */
 package Vista;
 
-import Controlador.BoletaPagoControlador;
 import java.awt.BorderLayout;
 
 /**
  *
  * @author Oscar
  */
-public class BoletaPagoView extends javax.swing.JPanel {
+public class HistorialView extends javax.swing.JPanel {
 
     /**
-     * Creates new form BoletaPagoView
+     * Creates new form HistorialView
      */
-    int idEmp;
-    public BoletaPagoView(int idEmp) {
+    public HistorialView() {
         initComponents();
         txtDni.setEditable(false);
         txtEmpleado.setEditable(false);
-        this.idEmp = idEmp;
     }
 
     /**
@@ -34,40 +31,35 @@ public class BoletaPagoView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JPanel();
         IconRegresar = new javax.swing.JLabel();
         IconRegresarHover = new javax.swing.JLabel();
-        btnPagar = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         txtEmpleado = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         txtDni = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstSalario = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstModContrato = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstArea = new javax.swing.JList<>();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        lstJorLaboral = new javax.swing.JList<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(900, 510));
+        setMaximumSize(new java.awt.Dimension(900, 510));
+        setMinimumSize(new java.awt.Dimension(900, 510));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("SF UI Display", 1, 18)); // NOI18N
-        jLabel2.setText("BOLETA DE PAGO");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 44, -1, 30));
-
-        jLabel1.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel1.setText("Seguro:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel3.setText("Empleado:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, 30));
-
-        jLabel4.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel4.setText("DNI:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
+        jLabel1.setFont(new java.awt.Font("SF UI Display", 1, 20)); // NOI18N
+        jLabel1.setText("HISTORIAL");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 31, -1, -1));
 
         btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         btnRegresar.setMaximumSize(new java.awt.Dimension(115, 42));
@@ -109,56 +101,53 @@ public class BoletaPagoView extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+        add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 415, -1, -1));
 
-        btnPagar.setBackground(new java.awt.Color(101, 101, 173));
-        btnPagar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPagarMouseClicked(evt);
-            }
-        });
+        jLabel3.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel3.setText("Empleado:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, 20));
 
-        jLabel5.setBackground(new java.awt.Color(153, 153, 255));
-        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Generar Boleta");
+        jLabel4.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel4.setText("Area");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, -1, -1));
+        add(txtEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 270, -1));
+        add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 140, -1));
 
-        javax.swing.GroupLayout btnPagarLayout = new javax.swing.GroupLayout(btnPagar);
-        btnPagar.setLayout(btnPagarLayout);
-        btnPagarLayout.setHorizontalGroup(
-            btnPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        btnPagarLayout.setVerticalGroup(
-            btnPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-        );
-
-        add(btnPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, -1, -1));
-        add(txtEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 270, -1));
+        jLabel5.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel5.setText("DNI:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
-        jLabel6.setText("Gratificacion:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
-        add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 140, -1));
+        jLabel6.setText("Salario");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
-        jCheckBox1.setSelected(true);
-        jCheckBox1.setEnabled(false);
-        add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
+        jLabel7.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel7.setText("Joranada Laboral");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, -1, -1));
 
-        jCheckBox2.setSelected(true);
-        jCheckBox2.setEnabled(false);
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
-            }
-        });
-        add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
+        jScrollPane1.setViewportView(lstSalario);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 130, 190));
+
+        jScrollPane2.setViewportView(lstModContrato);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 240, 190));
+
+        jScrollPane3.setViewportView(lstArea);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 180, 250, 190));
+
+        jLabel8.setFont(new java.awt.Font("SF UI Display", 1, 14)); // NOI18N
+        jLabel8.setText("Modalidad Contrato");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, -1));
+
+        jScrollPane4.setViewportView(lstJorLaboral);
+
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 200, 190));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
-        Vista.EmpleadoView vista = new Vista.EmpleadoView();
+        Vista.BitacoraView vista = new Vista.BitacoraView();
         vista.setSize(900, 510);
         vista.setLocation(0, 0);
         Dashboard.panelContenido.removeAll();
@@ -177,29 +166,26 @@ public class BoletaPagoView extends javax.swing.JPanel {
         IconRegresarHover.setVisible(false);
     }//GEN-LAST:event_btnRegresarMouseExited
 
-    private void btnPagarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagarMouseClicked
-        BoletaPagoControlador bpc = new BoletaPagoControlador(this);
-        bpc.genrerarBoleta(idEmp);
-    }//GEN-LAST:event_btnPagarMouseClicked
-
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IconRegresar;
     private javax.swing.JLabel IconRegresarHover;
-    private javax.swing.JPanel btnPagar;
     private javax.swing.JPanel btnRegresar;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    public javax.swing.JList<String> lstArea;
+    public javax.swing.JList<String> lstJorLaboral;
+    public javax.swing.JList<String> lstModContrato;
+    public javax.swing.JList<String> lstSalario;
     public javax.swing.JTextField txtDni;
     public javax.swing.JTextField txtEmpleado;
     // End of variables declaration//GEN-END:variables

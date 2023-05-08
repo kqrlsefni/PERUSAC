@@ -25,12 +25,12 @@ public class Empleado {
     private Float empSalario;
     private Date empFechaIngreso;
     private int empEstado;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private Date empFechaInicio;
+    private Date empFechaFin;
     
     public Empleado(){}
 
-    public Empleado(int empCodigo, String empDni, String empNombre, String empApellidoMat, String empApellidoPat, String empGen, String empArea, String empModContrato, String empJornadaLab, Date empFechaNac, String empFoto, Float empSalario, Date empFechaIngreso, int empEstado, Date fechaInicio, Date fechaFin) {
+    public Empleado(int empCodigo, String empDni, String empNombre, String empApellidoMat, String empApellidoPat, String empGen, String empArea, String empModContrato, String empJornadaLab, Date empFechaNac, String empFoto, Float empSalario, Date empFechaIngreso, int empEstado, Date empFechaInicio, Date empFechaFin) {
         this.empCodigo = empCodigo;
         this.empDni = empDni;
         this.empNombre = empNombre;
@@ -45,9 +45,11 @@ public class Empleado {
         this.empSalario = empSalario;
         this.empFechaIngreso = empFechaIngreso;
         this.empEstado = empEstado;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.empFechaInicio = empFechaInicio;
+        this.empFechaFin = empFechaFin;
     }
+
+    
 
     
 
@@ -119,21 +121,23 @@ public class Empleado {
         this.empModContrato = empModContrat;
     }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
+    public Date getEmpFechaInicio() {
+        return empFechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setEmpFechaInicio(Date empFechaInicio) {
+        this.empFechaInicio = empFechaInicio;
     }
 
-    public Date getFechaFin() {
-        return fechaFin;
+    public Date getEmpFechaFin() {
+        return empFechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setEmpFechaFin(Date empFechaFin) {
+        this.empFechaFin = empFechaFin;
     }
+
+    
 
     
 

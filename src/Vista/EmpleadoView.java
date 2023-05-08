@@ -507,7 +507,7 @@ public class EmpleadoView extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Seleccione un registro", "Mensaje", JOptionPane.WARNING_MESSAGE);
         } else{
             idEmp = Integer.parseInt(tblEmpleados.getValueAt(fila, 0).toString());
-            Vista.BoletaPagoView vistaBoletaPago = new Vista.BoletaPagoView();
+            Vista.BoletaPagoView vistaBoletaPago = new Vista.BoletaPagoView(idEmp);
 
             vistaBoletaPago.setSize(900, 510);
             vistaBoletaPago.setLocation(0, 0);

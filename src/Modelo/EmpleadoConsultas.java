@@ -63,12 +63,14 @@ public class EmpleadoConsultas {
             return datos;
     }
     public int agregar(Empleado p){
+        int r = 0;
         String sql="insert into empleado (EmpDni,EmpNombres,EmpApellidoPaterno,EmpApellidoMaterno,EmpGenero,EmpArea,EmpModalidadContrato,EmpJornadaLaboral,EmpFecNacimiento,"
-                + "EmpSalario,EmpFechaIngreso,EmpEstado) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "EmpSalario,EmpFechaIngreso,EmpEstado,EmpFecInicio,EmpFecFin) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         String sqlSalario = "insert into salariobitacora (SalEmpleado,SalSalario) values(?,?)";
         String sqlJornada= "insert into jornada_laboral_bitacora (JorEmpleado,JorJornada) values(?,?)";
         String sqlArea = "insert into areabitacora (AreEmpleado,AreArea) values(?,?)";
-        String sqlModalidad = "insert into modalidad_contrato_bitacora (ModEmpleado,ModModalida,ModFecInicio,ModFecFin) values(?,?,?,?)";
+        String sqlModalidad = "insert into modalidad_contrato_bitacora (ModEmpleado,ModModalidad,ModFecInicio,ModFecFin) values(?,?,?,?)";
+        String sqlUltimoRegistro = "select * from empleado order by EmpCodigo desc limit 1";
         try {
              conexion = conectar.getConnection();
              ps = conexion.prepareStatement(sql);
@@ -85,38 +87,67 @@ public class EmpleadoConsultas {
              ps.setDouble(10, p.getEmpSalario());
              ps.setDate(11, new java.sql.Date(p.getEmpFechaIngreso().getTime()));
              ps.setInt(12, p.getEmpEstado());
-             //llamamos el método para ejecutar la consulta SQl insert
-             ps.executeUpdate();
-             rs = ps.executeQuery();
+             ps.setDate(13, new java.sql.Date(p.getEmpFechaInicio().getTime()));
+             ps.setDate(14, new java.sql.Date(p.getEmpFechaFin().getTime()));
              
-             ps = conexion.prepareStatement(sqlSalario);
-             ps.setInt(1, rs.getInt(1));
-             ps.setDouble(2, p.getEmpSalario());
+             r = ps.executeUpdate();
+             if (r==1){
+                 ps = conexion.prepareStatement(sqlUltimoRegistro);
+                 rs = ps.executeQuery();
+                 if(rs.next()){
+                 ps = conexion.prepareStatement(sqlSalario);
+                 ps.setInt(1, rs.getInt(1));
+                 ps.setDouble(2, p.getEmpSalario());
+                 ps.executeUpdate();
+                 }
+                 ps = conexion.prepareStatement(sqlUltimoRegistro);
+                 rs = ps.executeQuery();
+                 if(rs.next()){
+                 ps = conexion.prepareStatement(sqlJornada);
+                 ps.setInt(1, rs.getInt(1));
+                 ps.setString(2, p.getEmpJornadaLab());
+                 ps.executeUpdate();
+                 }
+                 ps = conexion.prepareStatement(sqlUltimoRegistro);
+                rs = ps.executeQuery();
+                 if(rs.next()){
+                 ps = conexion.prepareStatement(sqlArea);
+                 ps.setInt(1, rs.getInt(1));
+                 ps.setString(2, p.getEmpArea());
+                 ps.executeUpdate();
+                 }
+                 ps = conexion.prepareStatement(sqlUltimoRegistro);
+                 rs = ps.executeQuery();
+                 if(rs.next()){
+                 ps = conexion.prepareStatement(sqlModalidad);
+                 ps.setInt(1, rs.getInt(1));
+                 ps.setString(2, p.getEmpModContrato());
+                 ps.setDate(3, new java.sql.Date(p.getEmpFechaInicio().getTime()));
+                 ps.setDate(4, new java.sql.Date(p.getEmpFechaFin().getTime()));
+                 ps.executeUpdate();
+             }
+                return 1;
+            }else{
+                return 0;
+            }
              
-             ps = conexion.prepareStatement(sqlJornada);
-             ps.setInt(1, rs.getInt(1));
-             ps.setString(2, p.getEmpJornadaLab());
              
-             ps = conexion.prepareStatement(sqlArea);
-             ps.setInt(1, rs.getInt(1));
-             ps.setString(2, p.getEmpArea());
-             
-             ps = conexion.prepareStatement(sqlModalidad);
-             ps.setInt(1, rs.getInt(1));
-             ps.setString(2, p.getEmpModContrato());
-             ps.setDate(3, new java.sql.Date(p.getFechaInicio().getTime()));
-             ps.setDate(4, new java.sql.Date(p.getFechaFin().getTime()));
         } catch (Exception e) {
             System.err.println("Error, "+e);
         }
-        return 1;
+        return r;
     }
     //Creamos el método actualizar con el parámetro al objeto persona
-    public int actualizar(Empleado p){
+    public int actualizar(Empleado p,boolean salario,boolean mod,boolean jor,boolean area){
         int r=0;
         //Crear la variable tipo String para la consulta SQL
         String sql="update empleado set EmpDni=?,EmpNombres=?,EmpApellidoPaterno=?,EmpApellidoMaterno=?,EmpGenero=?,EmpArea=?,EmpModalidadContrato=?,EmpJornadaLaboral=?,"
-                + "EmpFecNacimiento=?, EmpSalario=?, EmpFechaIngreso=? where EmpCodigo=?";
+                + "EmpFecNacimiento=?, EmpSalario=?, EmpFechaIngreso=?,EmpFecInicio=?,EmpFecFin=? where EmpCodigo=?";
+        String sqlSalario = "insert into salariobitacora (SalEmpleado,SalSalario) values(?,?)";
+        String sqlJornada= "insert into jornada_laboral_bitacora (JorEmpleado,JorJornada) values(?,?)";
+        String sqlArea = "insert into areabitacora (AreEmpleado,AreArea) values(?,?)";
+        String sqlModalidad = "insert into modalidad_contrato_bitacora (ModEmpleado,ModModalidad,ModFecInicio,ModFecFin) values(?,?,?,?)";
+        String sqlUltimoRegistro = "select * from empleado where EmpCodigo="+p.getEmpCodigo();
         try {
             //Hacer referencia a nuestra conexión
             conexion = conectar.getConnection();
@@ -133,11 +164,55 @@ public class EmpleadoConsultas {
             //ps.setString(10, p.getEmpFoto());
             ps.setDouble(10, p.getEmpSalario());
             ps.setDate(11, new java.sql.Date(p.getEmpFechaIngreso().getTime()));
-            ps.setInt(12, p.getEmpCodigo());
-            
+            ps.setDate(12, new java.sql.Date(p.getEmpFechaInicio().getTime()));
+            ps.setDate(13, new java.sql.Date(p.getEmpFechaFin().getTime()));
+            ps.setInt(14, p.getEmpCodigo());
             //llamamos el método para ejecutar la consulta SQl insert
             r=ps.executeUpdate();
             if (r==1){
+                if(salario == true){
+                   ps = conexion.prepareStatement(sqlUltimoRegistro);
+                  rs = ps.executeQuery();
+                 if(rs.next()){
+                 ps = conexion.prepareStatement(sqlSalario);
+                 ps.setInt(1, rs.getInt(1));
+                 ps.setDouble(2, p.getEmpSalario());
+                 ps.executeUpdate();
+                 } 
+                }
+                 if(jor == true){
+                     ps = conexion.prepareStatement(sqlUltimoRegistro);
+                 rs = ps.executeQuery();
+                 if(rs.next()){
+                 ps = conexion.prepareStatement(sqlJornada);
+                 ps.setInt(1, rs.getInt(1));
+                 ps.setString(2, p.getEmpJornadaLab());
+                 ps.executeUpdate();
+                 }
+                 }
+                 if(area == true){
+                    ps = conexion.prepareStatement(sqlUltimoRegistro);
+                rs = ps.executeQuery();
+                 if(rs.next()){
+                 ps = conexion.prepareStatement(sqlArea);
+                 ps.setInt(1, rs.getInt(1));
+                 ps.setString(2, p.getEmpArea());
+                 ps.executeUpdate();
+                 } 
+                 }
+                 if(mod == true){
+                     ps = conexion.prepareStatement(sqlUltimoRegistro);
+                 rs = ps.executeQuery();
+                 if(rs.next()){
+                 ps = conexion.prepareStatement(sqlModalidad);
+                 ps.setInt(1, rs.getInt(1));
+                 ps.setString(2, p.getEmpModContrato());
+                 ps.setDate(3, new java.sql.Date(p.getEmpFechaInicio().getTime()));
+                 ps.setDate(4, new java.sql.Date(p.getEmpFechaFin().getTime()));
+                 ps.executeUpdate();
+                 }
+                 }
+                 
                 return 1;
             }else{
                 return 0;
@@ -169,7 +244,7 @@ public class EmpleadoConsultas {
     
     public Empleado buscar(int id){
         Empleado emp = new Empleado();
-        String sql = "select * from empleado e inner join modalidad_contrato_bitacora m on m.ModEmpleado = e.EmpCodigo where EmpCodigo = ? and EmpEstado = 1 order by m.ModId desc";
+        String sql = "select * from empleado where EmpCodigo = ? and EmpEstado = 1";
             try {
                 
                 conexion = conectar.getConnection();
@@ -192,11 +267,134 @@ public class EmpleadoConsultas {
                     emp.setEmpSalario(rs.getFloat(12));
                     emp.setEmpFechaIngreso(rs.getDate(13));
                     emp.setEmpEstado(rs.getInt(14));
+                    emp.setEmpFechaInicio(rs.getDate(15));
+                    emp.setEmpFechaFin(rs.getDate(16));
                 }
             } catch (Exception e) {
                 System.err.println("Error, "+e);
             }
             return emp;
+    }
+    
+    public List listarSalarios(int id){
+    //Creamos una variable datos de tipo List del objeto Empleado
+        List<Modelo.Salario>datos = new ArrayList<>();
+        String sql = "select * from salariobitacora where SalEmpleado = ? order by SalId desc";
+            try {
+                //Hacer referencia a nuestra conexión
+                conexion = conectar.getConnection();
+                ps = conexion.prepareStatement(sql);
+                ps.setString(1,String.valueOf(id));
+                rs = ps.executeQuery();
+                //Aplicamos el método next para leer todos los datos del rs
+                while (rs.next()){
+                    //Instanciamos el objeto persona
+                    Modelo.Salario e = new Modelo.Salario();
+                    e.setIdSalario(rs.getInt(1));
+                    e.setEmpleado(rs.getInt(2));
+                    e.setSalario(rs.getFloat(3));
+                    
+                    
+                    
+                    //Agregamos a la variable 
+                    datos.add(e);
+                }
+            } catch (Exception e) {
+                System.err.println("Error, "+e);
+            }
+            //Este método va a retornar los datos del objeto
+            return datos;
+    }
+    
+    public List listarAreas(int id){
+    //Creamos una variable datos de tipo List del objeto Empleado
+        List<Modelo.Area>datos =  new ArrayList<>();
+        String sql = "select * from areabitacora where AreEmpleado = ? order by AreId desc";
+            try {
+                //Hacer referencia a nuestra conexión
+                conexion = conectar.getConnection();
+                ps = conexion.prepareStatement(sql);
+                ps.setString(1,String.valueOf(id));
+                rs = ps.executeQuery();
+                //Aplicamos el método next para leer todos los datos del rs
+                while (rs.next()){
+                    //Instanciamos el objeto persona
+                    Modelo.Area e = new Modelo.Area();
+                    e.setId(rs.getInt(1));
+                    e.setEmpleado(rs.getInt(2));
+                    e.setArea(rs.getString(3));
+                    
+                    
+                    
+                    //Agregamos a la variable 
+                    datos.add(e);
+                }
+            } catch (Exception e) {
+                System.err.println("Error, "+e);
+            }
+            //Este método va a retornar los datos del objeto
+            return datos;
+    }
+    
+    public List listarJornadas(int id){
+    //Creamos una variable datos de tipo List del objeto Empleado
+        List<Modelo.JornadaLaboral>datos = new ArrayList<>();
+        String sql = "select * from jornada_laboral_bitacora where JorEmpleado = ? order by JorId desc";
+            try {
+                //Hacer referencia a nuestra conexión
+                conexion = conectar.getConnection();
+                ps = conexion.prepareStatement(sql);
+                ps.setString(1,String.valueOf(id));
+                rs = ps.executeQuery();
+                //Aplicamos el método next para leer todos los datos del rs
+                while (rs.next()){
+                    //Instanciamos el objeto persona
+                    Modelo.JornadaLaboral e = new Modelo.JornadaLaboral();
+                    e.setId(rs.getInt(1));
+                    e.setEmpleado(rs.getInt(2));
+                    e.setJornada(rs.getString(3));
+                    
+                    
+                    
+                    //Agregamos a la variable 
+                    datos.add(e);
+                }
+            } catch (Exception e) {
+                System.err.println("Error, "+e);
+            }
+            //Este método va a retornar los datos del objeto
+            return datos;
+    }
+    
+    public List listarModalidades(int id){
+    //Creamos una variable datos de tipo List del objeto Empleado
+        List<Modelo.ModalidadContrato> datos = new ArrayList<>();
+        String sql = "select * from modalidad_contrato_bitacora where ModEmpleado = ? order by ModId desc";
+            try {
+                //Hacer referencia a nuestra conexión
+                conexion = conectar.getConnection();
+                ps = conexion.prepareStatement(sql);
+                ps.setString(1,String.valueOf(id));
+                rs = ps.executeQuery();
+                //Aplicamos el método next para leer todos los datos del rs
+                while (rs.next()){
+                    //Instanciamos el objeto persona
+                    Modelo.ModalidadContrato e = new Modelo.ModalidadContrato();
+                    e.setId(rs.getInt(1));
+                    e.setEmpleado(rs.getInt(2));
+                    e.setModalidad(rs.getString(3));
+                    e.setFecInicio(rs.getDate(4));
+                    e.setFecFin(rs.getDate(5));
+                    
+                    
+                    //Agregamos a la variable 
+                    datos.add(e);
+                }
+            } catch (Exception e) {
+                System.err.println("Error, "+e);
+            }
+            //Este método va a retornar los datos del objeto
+            return datos;
     }
     
 }

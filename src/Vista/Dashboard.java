@@ -384,15 +384,15 @@ public class Dashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEmpleadoMouseClicked
 
     private void txtBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBitacoraMouseClicked
-//        Vista.ReservaView resVis = new ReservaView();
-//
-//        resVis.setSize(700, 510);
-//        resVis.setLocation(0, 0);
-//
-//        panelContenido.removeAll();
-//        panelContenido.add(resVis, BorderLayout.CENTER);
-//        panelContenido.revalidate();
-//        panelContenido.repaint();
+        Vista.BitacoraView vistaBitacora = new BitacoraView();
+
+        vistaBitacora.setSize(900, 510);
+        vistaBitacora.setLocation(0, 0);
+
+        panelContenido.removeAll();
+        panelContenido.add(vistaBitacora, BorderLayout.CENTER);
+        panelContenido.revalidate();
+        panelContenido.repaint();
     }//GEN-LAST:event_txtBitacoraMouseClicked
 
     private void txtReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtReporteMouseClicked

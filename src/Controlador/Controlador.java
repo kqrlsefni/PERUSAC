@@ -47,7 +47,13 @@ public class Controlador {
         Date fecIngrso = vistaNuevo.txtFecIngreso.getDate();
         int estado = 1;
         Date fechaInicio = vistaNuevo.txtFecInicio.getDate();
-        Date fechaFin = vistaNuevo.txtFecFin.getDate();
+        Date fechaFin;
+        if(vistaNuevo.cboModContrato.getSelectedIndex()==1){
+           fechaFin = vistaNuevo.txtFecFin.getDate(); 
+        }
+        else{
+          fechaFin = null;  
+        }
         objEmpleado.setEmpDni(dni);
         objEmpleado.setEmpNombre(nombre);
         objEmpleado.setEmpApellidoPat(apePat);
@@ -60,8 +66,8 @@ public class Controlador {
         objEmpleado.setEmpFechaNac(fecNacimiento);
         objEmpleado.setEmpFechaIngreso(fecIngrso);
         objEmpleado.setEmpEstado(estado);
-        objEmpleado.setFechaInicio(fechaInicio);
-        objEmpleado.setFechaFin(fechaFin);
+        objEmpleado.setEmpFechaInicio(fechaInicio);
+        objEmpleado.setEmpFechaFin(fechaFin);
         int res = objEmpleadoConsultas.agregar(objEmpleado);
         if(res==1){
             add = true; 
